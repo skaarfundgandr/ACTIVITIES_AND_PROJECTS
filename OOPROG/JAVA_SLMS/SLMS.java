@@ -27,8 +27,13 @@ public class SLMS {
                         isbn = scan.nextLine();
                         System.out.println("Enter the number of books");
                         numBooks = scan.nextInt();
+                        
+                        if (list.isUnique(isbn))
+                            list = list.addBook(title, author, isbn, numBooks);
+                        else{
+                            System.out.println("Duplicate isbn detected!");
+                        }
 
-                        list = list.addBook(title, author, isbn, numBooks);
                         break;
                     case 2:
                         System.out.println("Enter the isbn of the book");
@@ -36,7 +41,9 @@ public class SLMS {
 
                         list.displayBook(isbn);
                         break;
-
+                    case 3:
+                        System.out.println("Thank you for using our SLMS exiting...");
+                        break;
                     default:
                         break;
                 }
