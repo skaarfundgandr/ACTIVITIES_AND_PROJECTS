@@ -1,4 +1,4 @@
-package ACTIVITIES_AND_PROJECTS.OOPROG.JAVA_SLMS;
+package JAVA_SLMS;
 
 public class Book {
     private String author;

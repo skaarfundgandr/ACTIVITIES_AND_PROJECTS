@@ -1,4 +1,4 @@
-package ACTIVITIES_AND_PROJECTS.OOPROG.JAVA_SLMS;
+package JAVA_SLMS;
 
 public class BookList {
     private Book book;
@@ -7,7 +7,7 @@ public class BookList {
         book = null;
     }
     public BookList addBook(String title, String author, String isbn, int numBooks){
-        Book newBook;
+        Book newBook = new Book();
 
         newBook.setTitle(title);
         newBook.setAuthor(author);
@@ -27,17 +27,19 @@ public class BookList {
         return this;
     }
     public void displayBook(String isbn){
+        Book currBook = book;
         String currIsbn = isbn.trim();
 
-        while (book != null) {
-            if (book.getISBN().equals(currIsbn)) {
-                System.out.println(book.getTitle());
-                System.out.println(book.getAuthor());
-                System.out.println(book.getISBN());
-                System.out.println("Number of copies available: " + book.numBooks);
+        while (currBook != null) {
+            if (currBook.getISBN().equals(currIsbn)) {
+                System.out.println(currBook.getTitle());
+                System.out.println(currBook.getAuthor());
+                System.out.println(currBook.getISBN());
+                System.out.println("Number of copies available: " + currBook.numBooks);
 
                 break;
             }
+            currBook = currBook.nextBook;
         }
     }
 }

@@ -1,21 +1,22 @@
-public package JAVA_SLMS;
+package JAVA_SLMS;
 import java.util.Scanner;
 
-class SLMS {
+public class SLMS {
     public static void main(String[] args) {
-        int choice, attempts = 0;
-        String title, author, isbn, numBooks;
+        int choice = 0, attempts = 0, numBooks;
+        String title, author, isbn;
 
         Scanner scan =  new Scanner(System.in);
         BookList list = new BookList();
         
-        System.out.println("Enter your choice:");
-        System.out.println("1. Add book");
-        System.out.println("2. Display book");
-        System.out.println("3. Exit");
         do {
             try {
+                System.out.println("1. Add book");
+                System.out.println("2. Display book");
+                System.out.println("3. Exit");
+                System.out.print("Enter your choice: ");
                 choice = scan.nextInt();
+                scan.nextLine(); // Clear input buffer
                 switch (choice) {
                     case 1:
                         System.out.println("Enter title");
@@ -42,7 +43,7 @@ class SLMS {
             } catch (Exception e) {
                 System.out.println("Invalid choice");
                 ++attempts;
-                scan.nextLine();
+                scan.nextLine(); // Clear input buffer
             }
         } while (choice != 3 && attempts < 3);
     }
