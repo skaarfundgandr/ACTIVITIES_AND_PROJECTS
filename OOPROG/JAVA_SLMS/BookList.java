@@ -28,10 +28,10 @@ public class BookList {
     }
     public void displayBook(String isbn){
         Book currBook = book;
-        String currIsbn = isbn.trim();
+        isbn = isbn.trim();
 
         while (currBook != null) {
-            if (currBook.getISBN().equals(currIsbn)) {
+            if (currBook.getISBN().equals(isbn)) {
                 System.out.println(currBook.getTitle());
                 System.out.println(currBook.getAuthor());
                 System.out.println(currBook.getISBN());
@@ -41,5 +41,16 @@ public class BookList {
             }
             currBook = currBook.nextBook;
         }
+    }
+    public boolean isUnique(String isbn){
+        Book currBook = book;
+        isbn = isbn.trim();
+
+        while (currBook != null) {
+            if (currBook.getISBN().equals(isbn))
+                return false;
+            currBook = currBook.nextBook;
+        }
+        return true;
     }
 }
