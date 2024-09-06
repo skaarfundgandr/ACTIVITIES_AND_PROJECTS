@@ -5,9 +5,10 @@ public class Book {
     private String title;
     private String isbn;
     public int numBooks;
-    public Book nextBook;
 
-    
+    public Book nextBook; // Linked List: points to next book
+
+    // Setters
     public void setAuthor(String str){
         author = str;
     }
@@ -17,7 +18,7 @@ public class Book {
     public void setISBN(String str){
         isbn = str;
     }
-
+    // Getters
     public String getAuthor(){
         return author;
     }

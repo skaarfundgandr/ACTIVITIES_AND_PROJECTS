@@ -53,4 +53,12 @@ public class BookList {
         }
         return true;
     }
+    // TODO write borrow book method
+    public void borrowBook(String isbn){
+
+    }
+    // TODO write return book method
+    public void returnBook(String isbn){
+
+    }
 }

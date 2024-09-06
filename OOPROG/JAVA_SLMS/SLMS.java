@@ -10,7 +10,7 @@ public class SLMS {
         BookList list = new BookList();
         
         do {
-            try {
+            try { // TODO Rework output and add accounts
                 System.out.println("1. Add book");
                 System.out.println("2. Display book");
                 System.out.println("3. Exit");
@@ -27,7 +27,7 @@ public class SLMS {
                         isbn = scan.nextLine();
                         System.out.println("Enter the number of books");
                         numBooks = scan.nextInt();
-                        
+                        // TODO Improve handling of this block
                         if (list.isUnique(isbn))
                             list = list.addBook(title, author, isbn, numBooks);
                         else{
