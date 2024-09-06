@@ -72,9 +72,13 @@ public class SLMS {
                             break;
                         default:
                             break;
+                        }
+                    } // TODO Add login page for user
+                    if (loggedIn && acc.getUserType(username).equals("user")) {
+                        
                     }
                 }
-            } catch (Exception e) {
+             catch (Exception e) { // TODO Write better error handling
                 System.out.println("Invalid choice");
                 ++attempts;
                 scan.nextLine(); // Clear input buffer
