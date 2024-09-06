@@ -1,13 +1,13 @@
 package JAVA_SLMS;
 
 public class BorrowedList extends BookList{
-    private Book books;
+    private Book book;
 
     public BorrowedList(){
-        books = null;
+        book = null;
     }
     public BorrowedList addBook(BookList list, String isbn){
-        Book borrowedBook;
+        Book borrowedBook = new Book();
         Book bookList = list.getBookList();
 
         if (bookList == null) {
@@ -15,15 +15,16 @@ public class BorrowedList extends BookList{
         } else {
             while (bookList != null) {
                 if (bookList.getISBN().equals(isbn)) {
+                    --bookList.numBooks;
                     borrowedBook = bookList;
                     borrowedBook.nextBook = null;
-                    if (books == null) {
-                        books = borrowedBook;
+                    if (book == null) {
+                        book = borrowedBook;
                     } else {
-                        while (books.nextBook != null) {
-                            books = books.nextBook;
+                        while (book.nextBook != null) {
+                            book = book.nextBook;
                         }
-                        books.nextBook = borrowedBook;
+                        book.nextBook = borrowedBook;
                     }
                 }
                 if (bookList.nextBook == null){
@@ -32,6 +33,24 @@ public class BorrowedList extends BookList{
                 }
                 bookList = bookList.nextBook;
             }
+        }
+
+        return this;
+    }
+    public BorrowedList returnBook(String isbn){
+        Book currBook = book;
+        Book prevBook = null;
+
+        if (currBook.getISBN().equals(isbn)) {
+            book = book.nextBook;
+            return this;
+        }
+        while (currBook != null && !(book.getISBN().equals(isbn))) {
+            prevBook = currBook;
+            currBook = currBook.nextBook;
+        }
+        if (currBook != null) {
+            prevBook.nextBook = currBook.nextBook;
         }
 
         return this;

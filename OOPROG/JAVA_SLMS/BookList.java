@@ -7,6 +7,7 @@ public class BookList {
         book = null;
     }
     public BookList addBook(String title, String author, String isbn, int numBooks){
+        Book currBook = book;
         Book newBook = new Book();
 
         newBook.setTitle(title);
@@ -18,10 +19,10 @@ public class BookList {
         if (book == null){
             book = newBook;
         } else {
-            while (book.nextBook != null) {
-                book = book.nextBook;
+            while (currBook.nextBook != null) {
+                currBook = currBook.nextBook;
             }
-            book.nextBook = newBook;
+            currBook.nextBook = newBook;
         }
 
         return this;
@@ -60,8 +61,5 @@ public class BookList {
     public void borrowBook(String isbn){
 
     }
-    // TODO write return book method
-    public void returnBook(String isbn){
-
-    }
+    
 }
