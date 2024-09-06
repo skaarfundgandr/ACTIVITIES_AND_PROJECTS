@@ -53,6 +53,9 @@ public class BookList {
         }
         return true;
     }
+    public Book getBookList(){
+        return this.book;
+    }
     // TODO write borrow book method
     public void borrowBook(String isbn){
 
