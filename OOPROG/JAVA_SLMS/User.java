@@ -5,6 +5,7 @@ public class User {
     private String password;
     private String userType;
     
+    public BorrowedList borrowedBooks;
     public User nextUser; // Linked list: points to next user
 
     public User(String username, String password, String userType) {

@@ -1,13 +1,10 @@
 package JAVA_SLMS;
 
 public class Accounts {
-    private User firstUser; 
-    private BorrowedList borrowedList; 
-
+    private User firstUser;
     
     public Accounts() {
         firstUser = null; 
-        borrowedList = new BorrowedList(); 
     }
 
     // Add a user to the linked list---ambot hahahahh
