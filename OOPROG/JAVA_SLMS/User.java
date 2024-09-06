@@ -11,6 +11,7 @@ public class User {
     public User(String username, String password, String userType) {
         this.username = username;
         this.password = password;
+        borrowedBooks = new BorrowedList();
         setUserType(userType); // Ensure valid userType is set
     }
 
