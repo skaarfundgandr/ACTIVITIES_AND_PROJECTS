@@ -55,4 +55,16 @@ public class BorrowedList extends BookList{
 
         return this;
     }
+    // Method to display all borrowed books
+    public void displayBook(){
+        Book currBook = book;
+
+        while (currBook != null) {
+            System.out.println("Title: " + currBook.getTitle());
+            System.out.println("Author: " + currBook.getAuthor());
+            System.out.println("ISBN: " + currBook.getISBN());
+            System.out.println();
+            currBook = currBook.nextBook;
+        }
+    }
 }
