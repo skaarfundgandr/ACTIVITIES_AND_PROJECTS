@@ -33,10 +33,11 @@ public class BookList {
 
         while (currBook != null) {
             if (currBook.getISBN().equals(isbn)) {
-                System.out.println(currBook.getTitle());
-                System.out.println(currBook.getAuthor());
-                System.out.println(currBook.getISBN());
+                System.out.println("Title: " + currBook.getTitle());
+                System.out.println("Author: " + currBook.getAuthor());
+                System.out.println("ISBN: " + currBook.getISBN());
                 System.out.println("Number of copies available: " + currBook.numBooks);
+                System.out.println();
 
                 break;
             }
