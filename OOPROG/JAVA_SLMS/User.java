@@ -39,7 +39,7 @@ public class User {
     }
 
     //conditions for user types
-    public void setUserType(String userType) {
+    public void setUserType(String userType) throws IllegalArgumentException {
         if (userType.equalsIgnoreCase("librarian") || userType.equalsIgnoreCase("user")) {
             this.userType = userType;
         } else {

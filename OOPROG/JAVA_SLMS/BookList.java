@@ -55,6 +55,25 @@ public class BookList {
         }
         return true;
     }
+    // Method to print all available books
+    public void printAllBooks() {
+        Book currBook = book;
+
+        while (currBook != null) {
+            System.out.println("Title: " + currBook.getTitle());
+            System.out.println("Author: " + currBook.getAuthor());
+            System.out.println("ISBN: " + currBook.getISBN());
+            if (currBook.numBooks > 0) {
+                System.out.println("Available");
+            } else {
+                System.out.println("Unavailable");
+            }
+
+            System.out.println();
+
+            currBook = currBook.nextBook;
+        }
+    }
     public Book getBookList(){
         return this.book;
     }
