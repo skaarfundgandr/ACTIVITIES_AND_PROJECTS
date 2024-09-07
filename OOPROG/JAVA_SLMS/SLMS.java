@@ -102,6 +102,7 @@ public class SLMS {
 
                                 borrowedBooks = acc.getBorrowedList(username);
                                 borrowedBooks.addBook(list, isbn);
+                                
                                 break;
                             case 4:
                                 System.out.println("Enter the ISBN of the book that you would like to return");
@@ -109,6 +110,7 @@ public class SLMS {
 
                                 borrowedBooks = acc.getBorrowedList(username);
                                 borrowedBooks.returnBook(isbn);
+                                
                                 break;
                             case 5:
                                 System.out.println("Thank you for using our SLMS");
