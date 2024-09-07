@@ -5,7 +5,7 @@ public class BorrowedList extends BookList{
 
     public BorrowedList(){
         book = null;
-    }
+    } // TODO Add case to check if book is not found
     public BorrowedList addBook(BookList list, String isbn){
         Book borrowedBook = new Book();
         Book bookList = list.getBookList();
@@ -30,10 +30,6 @@ public class BorrowedList extends BookList{
                     } else {
                         System.out.println("You can only borrow a book once!");
                     }
-                }
-                if (bookList.nextBook == null){
-                    System.out.println("Book not found");
-                    break;
                 }
                 bookList = bookList.nextBook;
             }
