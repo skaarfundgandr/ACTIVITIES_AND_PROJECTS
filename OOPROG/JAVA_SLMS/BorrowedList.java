@@ -37,19 +37,24 @@ public class BorrowedList extends BookList{
 
         return this;
     }// TODO increment returned books' number on main booklist by 1
+     // TODO URGENT fix null pointer exception when returning books if there is only one book
     public BorrowedList returnBook(String isbn){
         boolean returned = false;
 
         Book currBook = book;
         Book prevBook = null;
-
-        if (currBook.getISBN().equals(isbn)) {
+        if (currBook.getISBN().equals(isbn) && book.nextBook == null) {
+            book = null;
+        }
+        else if (currBook.getISBN().equals(isbn) && book.nextBook != null) {
             book = book.nextBook;
             returned = true;
         }
-        while (currBook != null && !(book.getISBN().equals(isbn))) {
+        else {
+            while (currBook != null && !(currBook.getISBN().equals(isbn))) {
             prevBook = currBook;
             currBook = currBook.nextBook;
+            }
         }
         if (currBook != null) {
             prevBook.nextBook = currBook.nextBook;

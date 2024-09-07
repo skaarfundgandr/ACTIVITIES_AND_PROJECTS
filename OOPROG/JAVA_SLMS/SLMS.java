@@ -119,8 +119,8 @@ public class SLMS {
                         }
                     }
                 }
-             catch (Exception e) { // TODO Write better error handling
-                System.out.println("Invalid choice! attempt " + (attempts + 1) + "of 3");
+            catch (Exception e) { // TODO Write better error handling
+                System.out.println("Invalid choice! attempt " + (attempts + 1) + " of 3");
                 ++attempts;
                 scan.nextLine(); // Clear input buffer
             }
