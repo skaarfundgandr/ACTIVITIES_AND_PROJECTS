@@ -5,7 +5,8 @@ public class BorrowedList extends BookList{
 
     public BorrowedList(){
         book = null;
-    } // TODO Add case to check if book is not found
+    }
+    // TODO Fix infinite loop if book is borrowed twice
     public BorrowedList addBook(BookList list, String isbn){
         Book borrowedBook = new Book();
         Book bookList = list.getBookList();
@@ -27,21 +28,33 @@ public class BorrowedList extends BookList{
                             }
                             book.nextBook = borrowedBook;
                         }
+                        break;
                     } else {
                         System.out.println("You can only borrow a book once!");
                     }
                 }
                 bookList = bookList.nextBook;
             }
+            if (bookList == null) {
+                System.out.println("Book not found");
+            }
         }
 
         return this;
-    }// TODO increment returned books' number on main booklist by 1
-    public BorrowedList returnBook(String isbn){
+    }
+    public BorrowedList returnBook(BookList mainList, String isbn){
         boolean returned = false;
 
+        Book main = mainList.getBookList();
         Book currBook = book;
         Book prevBook = null;
+
+        while (main != null) {
+            if (main.getISBN().equals(isbn)) {
+                break;
+            }
+            main = main.nextBook;
+        }
         if (currBook.getISBN().equals(isbn) && book.nextBook == null) {
             book = null;
             returned = true;
@@ -64,6 +77,7 @@ public class BorrowedList extends BookList{
            System.out.println("You have not borrowed this book"); 
         }
         if (returned) {
+            ++main.numBooks;
             System.out.println("Book returned");
         }
 
@@ -73,6 +87,9 @@ public class BorrowedList extends BookList{
     public void displayBook(){
         Book currBook = book;
 
+        if (currBook == null) {
+            System.out.println("N/A\n");
+        }
         while (currBook != null) {
             System.out.println("Title: " + currBook.getTitle());
             System.out.println("Author: " + currBook.getAuthor());

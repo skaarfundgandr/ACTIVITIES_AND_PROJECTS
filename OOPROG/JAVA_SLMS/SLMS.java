@@ -1,14 +1,17 @@
 package JAVA_SLMS;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class SLMS {
+
+    private static Scanner scan =  new Scanner(System.in);
+
     public static void main(String[] args) {
         boolean loggedIn = false;
         int choice = 0, attempts = 0, numBooks;
         String title, author, isbn, input = "", username = "", password, userType;
-        BorrowedList borrowedBooks;
-
-        Scanner scan =  new Scanner(System.in);
+        BorrowedList borrowedBooks = null;
+        
         BookList list = new BookList();
         Accounts acc = new Accounts();
         
@@ -40,7 +43,8 @@ public class SLMS {
                 if (loggedIn && acc.getUserType(username).equals("librarian")) {
                     System.out.println("1. Add book");
                     System.out.println("2. Display book");
-                    System.out.println("3. Exit");
+                    System.out.println("3. Borrow/Return books");
+                    System.out.println("4. Logout");
                     System.out.print("Enter your choice: ");
                     choice = scan.nextInt();
                     scan.nextLine(); // Clear input buffer
@@ -71,8 +75,13 @@ public class SLMS {
                             list.displayBook(isbn);
                             break;
                         case 3:
-                            System.out.println("Thank you for using our SLMS exiting...");
+                            loggedIn = userPage(list, borrowedBooks, acc, username, loggedIn);
+
+                            break;
+                        case 4:
+                            System.out.println("Thank you for using our SLMS");
                             loggedIn = false;
+
                             break;
                         default:
                             System.out.println("Invalid choice! attempt " + (attempts + 1) + "of 3");
@@ -80,52 +89,62 @@ public class SLMS {
                         }
                     } // TODO Improve outputs for user
                     if (loggedIn && acc.getUserType(username).equals("user")) {
-                        System.out.println("1. Display all books");
-                        System.out.println("2. Display borrowed books");
-                        System.out.println("3. Borrow a book");
-                        System.out.println("4. Return a book");
-                        System.out.println("5. Exit");
-                        System.out.print("Enter your choice: ");
-                        choice = scan.nextInt();
-                        scan.nextLine(); // Clear input buffer
-                        switch (choice) {
-                            case 1:
-                                list.printAllBooks();
-                                break;
-                            case 2:
-                                borrowedBooks = acc.getBorrowedList(username);
-                                borrowedBooks.displayBook();
-                                break;
-                            case 3:
-                                System.out.println("Enter the ISBN of the book that you would like to borrow:");
-                                isbn = scan.nextLine();
-
-                                borrowedBooks = acc.getBorrowedList(username);
-                                borrowedBooks.addBook(list, isbn);
-                                
-                                break;
-                            case 4:
-                                System.out.println("Enter the ISBN of the book that you would like to return");
-                                isbn = scan.nextLine();
-
-                                borrowedBooks = acc.getBorrowedList(username);
-                                borrowedBooks.returnBook(isbn);
-                                
-                                break;
-                            case 5:
-                                System.out.println("Thank you for using our SLMS");
-                                loggedIn = false;
-                                break;
-                            default:
-                                break;
-                        }
+                        loggedIn = userPage(list, borrowedBooks, acc, username, loggedIn);
                     }
                 }
-            catch (Exception e) { // TODO Write better error handling
+            catch (InputMismatchException e) { // TODO Write better error handling
                 System.out.println("Invalid choice! attempt " + (attempts + 1) + " of 3");
                 ++attempts;
                 scan.nextLine(); // Clear input buffer
             }
         } while (!(input.equals("q")) && attempts < 3);
+    }
+    // Method for displaying login page of user WARNING! EXTREMELY SCUFFED
+    // TODO move back one page if user is a librarian
+    private static boolean userPage(BookList list, BorrowedList borrowedBooks, Accounts acc, String username, boolean loggedIn){
+        int choice; 
+        String isbn;
+        do {
+            System.out.println("1. Display all books");
+            System.out.println("2. Display borrowed books");
+            System.out.println("3. Borrow a book");
+            System.out.println("4. Return a book");
+            System.out.println("5. Logout");
+            System.out.print("Enter your choice: ");
+            choice = scan.nextInt();
+            scan.nextLine(); // Clear input buffer
+            switch (choice) {
+                case 1:
+                    list.printAllBooks();
+                    break;
+                case 2:
+                    borrowedBooks = acc.getBorrowedList(username);
+                    borrowedBooks.displayBook();
+                    break;
+                case 3:
+                    System.out.println("Enter the ISBN of the book that you would like to borrow:");
+                    isbn = scan.nextLine();
+
+                    borrowedBooks = acc.getBorrowedList(username);
+                    borrowedBooks.addBook(list, isbn);
+                    
+                    break;
+                case 4:
+                    System.out.println("Enter the ISBN of the book that you would like to return");
+                    isbn = scan.nextLine();
+
+                    borrowedBooks = acc.getBorrowedList(username);
+                    borrowedBooks.returnBook(list, isbn);
+                    
+                    break;
+                case 5:
+                    System.out.println("Thank you for using our SLMS");
+                    loggedIn = false;
+                    break;
+                default:
+                    break;
+            }
+        } while (loggedIn);
+        return loggedIn;
     }
 }

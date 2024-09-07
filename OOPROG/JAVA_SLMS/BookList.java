@@ -45,7 +45,7 @@ public class BookList {
         }
     }
     public boolean isUnique(String isbn){
-        Book currBook = book;
+        Book currBook = this.book;
         isbn = isbn.trim();
 
         while (currBook != null) {
