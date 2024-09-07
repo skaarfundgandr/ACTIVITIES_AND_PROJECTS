@@ -54,6 +54,17 @@ public class Accounts {
         }
         return null; // Username not found
     }
+    public BorrowedList getBorrowedList(String username){
+        User currUser = firstUser;
+
+        while (currUser != null) {
+            if (currUser.getUsername().equals(username)) {
+                return currUser.borrowedBooks;
+            }
+            currUser = currUser.nextUser;
+        }
+        return null;
+    }
 
     // Check if a username is  walay duplicates / unique
     private boolean isUnique(String username) {

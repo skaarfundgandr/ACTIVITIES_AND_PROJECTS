@@ -37,7 +37,6 @@ public class User {
     public String getUserType() {
         return userType;
     }
-
     //conditions for user types
     public void setUserType(String userType) throws IllegalArgumentException {
         if (userType.equalsIgnoreCase("librarian") || userType.equalsIgnoreCase("user")) {

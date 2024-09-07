@@ -15,16 +15,20 @@ public class BorrowedList extends BookList{
         } else {
             while (bookList != null) {
                 if (bookList.getISBN().equals(isbn)) {
-                    --bookList.numBooks;
-                    borrowedBook = bookList;
-                    borrowedBook.nextBook = null;
-                    if (book == null) {
-                        book = borrowedBook;
-                    } else {
-                        while (book.nextBook != null) {
-                            book = book.nextBook;
+                    if (isUnique(isbn)){
+                        --bookList.numBooks;
+                        borrowedBook = bookList;
+                        borrowedBook.nextBook = null;
+                        if (book == null) {
+                            book = borrowedBook;
+                        } else {
+                            while (book.nextBook != null) {
+                                book = book.nextBook;
+                            }
+                            book.nextBook = borrowedBook;
                         }
-                        book.nextBook = borrowedBook;
+                    } else {
+                        System.out.println("You can only borrow a book once!");
                     }
                 }
                 if (bookList.nextBook == null){
@@ -36,14 +40,16 @@ public class BorrowedList extends BookList{
         }
 
         return this;
-    }
+    }// TODO increment returned books' number on main booklist by 1
     public BorrowedList returnBook(String isbn){
+        boolean returned = false;
+
         Book currBook = book;
         Book prevBook = null;
 
         if (currBook.getISBN().equals(isbn)) {
             book = book.nextBook;
-            return this;
+            returned = true;
         }
         while (currBook != null && !(book.getISBN().equals(isbn))) {
             prevBook = currBook;
@@ -51,6 +57,13 @@ public class BorrowedList extends BookList{
         }
         if (currBook != null) {
             prevBook.nextBook = currBook.nextBook;
+            returned = true;
+        }
+        if (currBook == null) {
+           System.out.println("You have not borrowed this book"); 
+        }
+        if (returned) {
+            System.out.println("Book returned");
         }
 
         return this;
