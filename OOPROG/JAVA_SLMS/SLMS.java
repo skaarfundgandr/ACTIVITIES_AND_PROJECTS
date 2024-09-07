@@ -72,6 +72,7 @@ public class SLMS {
                             break;
                         case 3:
                             System.out.println("Thank you for using our SLMS exiting...");
+                            loggedIn = false;
                             break;
                         default:
                             System.out.println("Invalid choice! attempt " + (attempts + 1) + "of 3");
