@@ -18,7 +18,7 @@ public class BorrowedList extends BookList{
                 if (bookList.getISBN().equals(isbn)) {
                     borrowedBook = bookList;
                     borrowedBook.nextBook = null;
-                    if (isUnique(isbn)){
+                    if (isUnique(isbn) && bookList.numBooks > 0){
                         --bookList.numBooks;
                         if (book == null) {
                             book = borrowedBook;
@@ -28,7 +28,10 @@ public class BorrowedList extends BookList{
                             }
                             currBook.nextBook = borrowedBook;
                         }
+                        System.out.println("Book successfully borrowed");
                         break;
+                    } else if (bookList.numBooks < 1){
+                        System.out.println("Book is currently unavailable");
                     } else {
                         System.out.println("You can only borrow a book once!");
                     }
@@ -102,7 +105,7 @@ public class BorrowedList extends BookList{
             System.out.println("N/A\n");
         }
         while (currBook != null) {
-            System.out.println("Title: " + currBook.getTitle());
+            System.out.println("\nTitle: " + currBook.getTitle());
             System.out.println("Author: " + currBook.getAuthor());
             System.out.println("ISBN: " + currBook.getISBN());
             System.out.println();
