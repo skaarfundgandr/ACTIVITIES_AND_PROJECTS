@@ -20,7 +20,7 @@ public class SLMS {
                     System.out.println("1. Login\n2. Register\n3. Exit");
                     System.out.print("Enter your choice: ");
                     input = scan.nextInt();
-
+                    scan.nextLine(); // Clear input buffer
                     if (input == 1){
                         System.out.print("Username: ");
                         username = scan.nextLine();
