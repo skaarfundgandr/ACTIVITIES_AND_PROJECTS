@@ -3,13 +3,12 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class SLMS {
-
     private static Scanner scan =  new Scanner(System.in);
 
     public static void main(String[] args) {
         boolean loggedIn = false;
-        int choice = 0, attempts = 0, numBooks;
-        String title, author, isbn, input = "", username = "", password, userType;
+        int choice = 0, attempts = 0, numBooks, input = 0;
+        String title, author, isbn, username = "", password, userType;
         BorrowedList borrowedBooks = null;
         
         BookList list = new BookList();
@@ -18,9 +17,23 @@ public class SLMS {
         do {
             try { // TODO Rework output
                 if (loggedIn == false){
-                    System.out.println("Login or Register? (press q to quit)");
-                    input = scan.nextLine().toLowerCase();
-                    if (input.equals("register")) {
+                    System.out.println("1. Login\n2. Register\n3. Exit");
+                    System.out.print("Enter your choice: ");
+                    input = scan.nextInt();
+
+                    if (input == 1){
+                        System.out.print("Username: ");
+                        username = scan.nextLine();
+                        System.out.print("Password: ");
+                        password = scan.nextLine();
+
+                        loggedIn = acc.login(username, password);
+                        if (loggedIn == false) {
+                            System.out.println("Log in failed\n");
+                        }
+                    }
+
+                    if (input == 2) {
                         System.out.print("Username: ");
                         username = scan.nextLine();
                         System.out.print("Password: ");
@@ -31,15 +44,8 @@ public class SLMS {
                         acc.addUser(username, password, userType);
                         loggedIn = acc.login(username, password);
                     }
-                    if (input.equals("login")) {
-                        System.out.print("Username: ");
-                        username = scan.nextLine();
-                        System.out.print("Password: ");
-                        password = scan.nextLine();
-
-                        loggedIn = acc.login(username, password);
-                    }
-                } // TODO Improve output
+                }
+                // TODO Improve output
                 if (loggedIn && acc.getUserType(username).equals("librarian")) {
                     System.out.println("1. Add book");
                     System.out.println("2. Display book");
@@ -59,13 +65,13 @@ public class SLMS {
                             System.out.println("Enter the number of books");
                             numBooks = scan.nextInt();
                             // TODO Improve handling of this block
-                            if (list.isUnique(isbn))
+                            if (list.isUnique(isbn)){
                                 list = list.addBook(title, author, isbn, numBooks);
+                                System.out.println("Book successfully added");
+                            }
                             else{
                                 System.out.println("Duplicate ISBN detected!");
                             }
-
-                            System.out.println("Book successfully added");
 
                             break;
                         case 2:
@@ -84,7 +90,8 @@ public class SLMS {
 
                             break;
                         default:
-                            System.out.println("Invalid choice! attempt " + (attempts + 1) + "of 3");
+                            System.out.println("Invalid choice! attempt " + (attempts + 1) + " of 3");
+                            ++attempts;
                             break;
                         }
                     } // TODO Improve outputs for user
@@ -97,10 +104,9 @@ public class SLMS {
                 ++attempts;
                 scan.nextLine(); // Clear input buffer
             }
-        } while (!(input.equals("q")) && attempts < 3);
+        } while (!(input == 3) && attempts < 3);
     }
     // Method for displaying login page of user WARNING! EXTREMELY SCUFFED
-    // TODO move back one page if user is a librarian
     private static boolean userPage(BookList list, BorrowedList borrowedBooks, Accounts acc, String username, boolean loggedIn){
         int choice; 
         String isbn;
@@ -109,7 +115,11 @@ public class SLMS {
             System.out.println("2. Display borrowed books");
             System.out.println("3. Borrow a book");
             System.out.println("4. Return a book");
-            System.out.println("5. Logout");
+            if (acc.getUserType(username).equals("user")) {
+                System.out.println("5. Logout");
+            } else {
+                System.out.println("5. Exit");
+            }
             System.out.print("Enter your choice: ");
             choice = scan.nextInt();
             scan.nextLine(); // Clear input buffer
@@ -138,10 +148,13 @@ public class SLMS {
                     
                     break;
                 case 5:
-                    System.out.println("Thank you for using our SLMS");
-                    loggedIn = false;
+                    if (acc.getUserType(username).equals("user")) {
+                        System.out.println("Thank you for using our SLMS");
+                        loggedIn = false;
+                    }
                     break;
                 default:
+                    System.out.println("Invalid choice! Please enter again");
                     break;
             }
         } while (loggedIn);

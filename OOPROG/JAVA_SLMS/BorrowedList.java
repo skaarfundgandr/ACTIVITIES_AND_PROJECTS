@@ -6,9 +6,10 @@ public class BorrowedList extends BookList{
     public BorrowedList(){
         book = null;
     }
-    // TODO Fix infinite loop if book is borrowed twice
+    // TODO borrowed books points to itself when adding the same book twice
     public BorrowedList addBook(BookList list, String isbn){
         Book borrowedBook = new Book();
+        Book currBook = this.book;
         Book bookList = list.getBookList();
 
         if (bookList == null) {
@@ -16,17 +17,17 @@ public class BorrowedList extends BookList{
         } else {
             while (bookList != null) {
                 if (bookList.getISBN().equals(isbn)) {
+                    borrowedBook = bookList;
+                    borrowedBook.nextBook = null;
                     if (isUnique(isbn)){
                         --bookList.numBooks;
-                        borrowedBook = bookList;
-                        borrowedBook.nextBook = null;
                         if (book == null) {
                             book = borrowedBook;
                         } else {
-                            while (book.nextBook != null) {
-                                book = book.nextBook;
+                            while (currBook.nextBook != null) {
+                                currBook = currBook.nextBook;
                             }
-                            book.nextBook = borrowedBook;
+                            currBook.nextBook = borrowedBook;
                         }
                         break;
                     } else {
@@ -85,7 +86,7 @@ public class BorrowedList extends BookList{
     }
     // Method to display all borrowed books
     public void displayBook(){
-        Book currBook = book;
+        Book currBook = this.book;
 
         if (currBook == null) {
             System.out.println("N/A\n");
