@@ -6,7 +6,6 @@ public class BorrowedList extends BookList{
     public BorrowedList(){
         book = null;
     }
-    // TODO borrowed books points to itself when adding the same book twice
     public BorrowedList addBook(BookList list, String isbn){
         Book borrowedBook = new Book();
         Book currBook = this.book;
@@ -83,6 +82,17 @@ public class BorrowedList extends BookList{
         }
 
         return this;
+    }
+    public boolean isUnique(String isbn){
+        Book currBook = this.book;
+        isbn = isbn.trim();
+
+        while (currBook != null) {
+            if (currBook.getISBN().equals(isbn))
+                return false;
+            currBook = currBook.nextBook;
+        }
+        return true;
     }
     // Method to display all borrowed books
     public void displayBook(){
