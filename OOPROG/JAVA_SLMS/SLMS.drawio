@@ -168,8 +168,59 @@
         <mxCell id="cKItDvK8W3Hqo0DehDuH-71" value="User logged in AND user type is &quot;librarian&quot;?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="570" y="1110" width="120" height="130" as="geometry" />
         </mxCell>
+        <mxCell id="cKItDvK8W3Hqo0DehDuH-78" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="cKItDvK8W3Hqo0DehDuH-75" target="cKItDvK8W3Hqo0DehDuH-77">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="cKItDvK8W3Hqo0DehDuH-75" value="Display librarian page" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
           <mxGeometry x="780" y="1137.5" width="140" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="cKItDvK8W3Hqo0DehDuH-80" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="cKItDvK8W3Hqo0DehDuH-77" target="cKItDvK8W3Hqo0DehDuH-79">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cKItDvK8W3Hqo0DehDuH-77" value="GET choice" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="978.6" y="1145" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cKItDvK8W3Hqo0DehDuH-82" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="cKItDvK8W3Hqo0DehDuH-79" target="cKItDvK8W3Hqo0DehDuH-81">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cKItDvK8W3Hqo0DehDuH-93" value="True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="cKItDvK8W3Hqo0DehDuH-82">
+          <mxGeometry x="-0.1898" y="-1" relative="1" as="geometry">
+            <mxPoint x="-3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cKItDvK8W3Hqo0DehDuH-79" value="Choice is add book?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1162.5" y="1127.5" width="105" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="cKItDvK8W3Hqo0DehDuH-84" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="cKItDvK8W3Hqo0DehDuH-81" target="cKItDvK8W3Hqo0DehDuH-83">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cKItDvK8W3Hqo0DehDuH-81" value="GET Title, Author, ISBN and number of books" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="1128.75" width="180" height="92.5" as="geometry" />
+        </mxCell>
+        <mxCell id="cKItDvK8W3Hqo0DehDuH-87" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="cKItDvK8W3Hqo0DehDuH-83" target="cKItDvK8W3Hqo0DehDuH-86">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cKItDvK8W3Hqo0DehDuH-90" value="True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="cKItDvK8W3Hqo0DehDuH-87">
+          <mxGeometry x="-0.2571" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cKItDvK8W3Hqo0DehDuH-89" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="cKItDvK8W3Hqo0DehDuH-83" target="cKItDvK8W3Hqo0DehDuH-88">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cKItDvK8W3Hqo0DehDuH-92" value="False" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="cKItDvK8W3Hqo0DehDuH-89">
+          <mxGeometry x="-0.2571" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cKItDvK8W3Hqo0DehDuH-83" value="ISBN is unique?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="1122.5" width="110" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="cKItDvK8W3Hqo0DehDuH-86" value="Add book to list" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1740" y="1145" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cKItDvK8W3Hqo0DehDuH-88" value="Print &quot;Duplicate ISBN&quot;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="1547.5" y="1280" width="135" height="70" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
