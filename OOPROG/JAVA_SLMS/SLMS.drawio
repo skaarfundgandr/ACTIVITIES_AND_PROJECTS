@@ -219,8 +219,14 @@
         <mxCell id="cKItDvK8W3Hqo0DehDuH-86" value="Add book to list" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1740" y="1145" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="cKItDvK8W3Hqo0DehDuH-96" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="cKItDvK8W3Hqo0DehDuH-88" target="cKItDvK8W3Hqo0DehDuH-95">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="cKItDvK8W3Hqo0DehDuH-88" value="Print &quot;Duplicate ISBN&quot;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
           <mxGeometry x="1547.5" y="1280" width="135" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="cKItDvK8W3Hqo0DehDuH-95" value="A" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.flowchart.on-page_reference;" vertex="1" parent="1">
+          <mxGeometry x="1585" y="1400" width="60" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
