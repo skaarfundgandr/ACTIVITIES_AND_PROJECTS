@@ -8,20 +8,24 @@ public class BorrowedList extends BookList{
     }
     public BorrowedList addBook(BookList list, String isbn){
         Book borrowedBook = new Book();
+        Book bookList;
+        
         Book currBook = this.book;
-        Book bookList = list.getBookList();
+        bookList = list.getBookList();
 
         if (bookList == null) {
             System.out.println("No books are currently available");
         } else {
             while (bookList != null) {
                 if (bookList.getISBN().equals(isbn)) {
-                    borrowedBook = bookList;
-                    borrowedBook.nextBook = null;
                     if (isUnique(isbn) && bookList.numBooks > 0){
+                        borrowedBook.setTitle(bookList.getTitle());
+                        borrowedBook.setAuthor(bookList.getAuthor());
+                        borrowedBook.setISBN(bookList.getISBN());
+                        borrowedBook.nextBook = null;
                         --bookList.numBooks;
-                        if (book == null) {
-                            book = borrowedBook;
+                        if (this.book == null) {
+                            this.book = borrowedBook;
                         } else {
                             while (currBook.nextBook != null) {
                                 currBook = currBook.nextBook;
