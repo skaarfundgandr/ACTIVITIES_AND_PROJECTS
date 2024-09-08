@@ -107,57 +107,56 @@ public class SLMS {
         } while (!(input == 3) && attempts < 3);
     }
     // Method for displaying login page of user WARNING! EXTREMELY SCUFFED
-    private static boolean userPage(BookList list, BorrowedList borrowedBooks, Accounts acc, String username, boolean loggedIn){
-        int choice; 
+  private static boolean userPage(BookList list, BorrowedList borrowedBooks, Accounts acc, String username,
+            boolean loggedIn) {
+        int choice;
         String isbn;
-        do {
+
+        while (loggedIn) {
             System.out.println("1. Display all books");
             System.out.println("2. Display borrowed books");
             System.out.println("3. Borrow a book");
             System.out.println("4. Return a book");
-            if (acc.getUserType(username).equals("user")) {
-                System.out.println("5. Logout");
-            } else {
-                System.out.println("5. Exit");
-            }
+            System.out.println("5. Logout");
             System.out.print("Enter your choice: ");
-            choice = scan.nextInt();
-            scan.nextLine(); // Clear input buffer
-            switch (choice) {
-                case 1:
-                    list.printAllBooks();
-                    break;
-                case 2:
-                    borrowedBooks = acc.getBorrowedList(username);
-                    borrowedBooks.displayBook();
-                    break;
-                case 3:
-                    System.out.println("Enter the ISBN of the book that you would like to borrow:");
-                    isbn = scan.nextLine();
 
-                    borrowedBooks = acc.getBorrowedList(username);
-                    borrowedBooks.addBook(list, isbn);
-                    
-                    break;
-                case 4:
-                    System.out.println("Enter the ISBN of the book that you would like to return");
-                    isbn = scan.nextLine();
+            try {
+                choice = scan.nextInt();
+                scan.nextLine(); 
 
-                    borrowedBooks = acc.getBorrowedList(username);
-                    borrowedBooks.returnBook(list, isbn);
-                    
-                    break;
-                case 5:
-                    if (acc.getUserType(username).equals("user")) {
+                switch (choice) {
+                    case 1:
+                        list.printAllBooks();
+                        break;
+                    case 2:
+                        borrowedBooks = acc.getBorrowedList(username);
+                        borrowedBooks.displayBook();
+                        break;
+                    case 3:
+                        System.out.println("Enter the ISBN of the book that you would like to borrow:");
+                        isbn = scan.nextLine();
+                        borrowedBooks = acc.getBorrowedList(username);
+                        borrowedBooks = borrowedBooks.addBook(list, isbn);
+                        break;
+                    case 4:
+                        System.out.println("Enter the ISBN of the book that you would like to return:");
+                        isbn = scan.nextLine();
+                        borrowedBooks = acc.getBorrowedList(username);
+                        borrowedBooks = borrowedBooks.returnBook(list, isbn);
+                        break;
+                    case 5:
                         System.out.println("Thank you for using our SLMS");
                         loggedIn = false;
-                    }
-                    break;
-                default:
-                    System.out.println("Invalid choice! Please enter again");
-                    break;
+                        break;
+                    default:
+                        System.out.println("Invalid choice, please try again.");
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input, please enter a number.");
+                scan.nextLine();
             }
-        } while (loggedIn);
+        }
         return loggedIn;
     }
 }
