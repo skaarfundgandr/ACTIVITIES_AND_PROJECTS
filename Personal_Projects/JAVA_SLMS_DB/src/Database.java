@@ -11,7 +11,12 @@ public class Database {
 
     public Database() {
         try {
-            Class.forName("org.xerial.sqlite.JDBC");
+            try {
+                Class.forName("org.sqlite.JDBC");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
             conn = DriverManager.getConnection("jdbc:sqlite:test.db");
             statement = conn.createStatement();
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS Books(Title string, Author string, ISBN string, NumBooks int)");

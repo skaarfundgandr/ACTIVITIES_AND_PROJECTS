@@ -1,0 +1,2 @@
+#!/bin/sh
+javac -cp /config/workspace/ACTIVITIES_AND_PROJECTS/Personal_Projects/JAVA_SLMS_DB/lib/slf4j-api-1.7.36.jar:/config/workspace/ACTIVITIES_AND_PROJECTS/Personal_Projects/JAVA_SLMS_DB/lib/sqlite-jdbc-3.46.1.0.jar @sources.txt -d .
