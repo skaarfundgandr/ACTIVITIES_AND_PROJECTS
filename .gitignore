@@ -3,5 +3,6 @@
 *.exe
 *.txt
 *.jar
+*.db
 */build
 OOPROG/Sortation_Algorithms/build
