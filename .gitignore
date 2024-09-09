@@ -1,5 +1,7 @@
 *.class
 *.o
 *.exe
+*.txt
+*.jar
 */build
 OOPROG/Sortation_Algorithms/build
