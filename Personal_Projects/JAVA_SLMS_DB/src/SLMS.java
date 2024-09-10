@@ -11,10 +11,12 @@ public class SLMS {
         Scanner scan = new Scanner(System.in);
         Database db = new Database();
         BookDAO books = new BookDAO(db.getConnection());
+        
         do {
             System.out.println("1. Add book");
             System.out.println("2. Display all books");
-            System.out.println("3. Exit");
+            System.out.println("3. Display book info");
+            System.out.println("4. Exit");
 
             choice = scan.nextInt();
             scan.nextLine();
@@ -34,6 +36,12 @@ public class SLMS {
             if (choice == 2) {
                 books.printAllBooks();
             }
-        } while (choice != 3);
+            if (choice == 3) {
+                System.out.println("Enter ISBN:");
+                isbn = scan.nextLine();
+                books.getBookInfo(isbn);
+            }
+        } while (choice != 4);
+        db.closeConnection();
     }
 }

@@ -13,22 +13,28 @@ public class Database {
         try {
             try {
                 Class.forName("org.sqlite.JDBC");
-            } catch (Exception e) {
+            } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
             
             conn = DriverManager.getConnection("jdbc:sqlite:test.db");
             statement = conn.createStatement();
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS Books(Title string, Author string, ISBN string, NumBooks int)");
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS Users(Username string, Password string, UserType string)");
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS BorrowedBooks(Title string, Author string, ISBN string, NumBooks int)");
-            System.out.println("Database connection succeeded");
+            statement.execute("CREATE TABLE IF NOT EXISTS Books(Title string, Author string, ISBN string, NumBooks int)");
+            statement.execute("CREATE TABLE IF NOT EXISTS Users(Username string, Password string, UserType string)");
+            System.out.println("Database connection succeeded\n");
         } catch (SQLException e) {
-            System.out.println("Database connection failed");
+            System.err.println("\nDatabase connection failed");
             e.printStackTrace();
         }
     }
     public Connection getConnection(){
         return this.conn;
+    }
+    public void closeConnection(){
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
