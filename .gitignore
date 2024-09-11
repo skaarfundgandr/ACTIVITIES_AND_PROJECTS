@@ -4,5 +4,6 @@
 *.txt
 *.jar
 *.db
+*.env
 */build
 OOPROG/Sortation_Algorithms/build
