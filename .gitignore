@@ -6,4 +6,5 @@
 *.db
 *.env
 */build
+.vscode/
 OOPROG/Sortation_Algorithms/build
