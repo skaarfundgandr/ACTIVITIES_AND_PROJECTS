@@ -45,15 +45,15 @@ public class BookDAO {
     public ResultSet getBookInfo(String isbn){
         try {
             rs = statement.executeQuery("SELECT * FROM Books WHERE ISBN=" + isbn);
-            if (rs == null) {
-                System.out.println("Book not found");
-            } else {
-                while (rs.next()) {
+            if (rs.next()) {
+                do {
                     System.out.println("Title: " + rs.getString("Title"));
                     System.out.println("Author: " + rs.getString("Author"));
                     System.out.println("ISBN: " + rs.getString("ISBN"));
                     System.out.println("Number of books: " + rs.getInt("NumBooks"));
-                }
+                } while (rs.next());
+            } else {
+                System.out.println("Book not found");
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -32,10 +32,10 @@ public class UserDAO {
                 
                 if (pStatement.executeUpdate() > 0) {
                     System.out.println("User registered successfully");
+                    statement.execute("CREATE TABLE IF NOT EXISTS " + username);
                 } else {
                     System.out.println("Registration failed");
                 }
-                statement.execute("CREATE TABLE IF NOT EXISTS " + username);
             }
         } catch (SQLException e) {
             e.printStackTrace();
