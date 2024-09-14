@@ -42,7 +42,7 @@ public class BookDAO {
             e.printStackTrace();
         }
     }
-    public ResultSet getBookInfo(String isbn){
+    public void getBookInfo(String isbn){
         try {
             rs = statement.executeQuery("SELECT * FROM Books WHERE ISBN=" + isbn);
             if (rs.next()) {
@@ -58,7 +58,6 @@ public class BookDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return rs;
     }
     public void printAllBooks(){
         try {

@@ -26,7 +26,7 @@ public class SLMS {
                 System.out.println("Enter Author:");
                 author = scan.nextLine();
                 System.out.println("Enter ISBN:");
-                isbn = scan.nextLine();
+                isbn = scan.nextLine().toUpperCase();
                 System.out.println("Enter the number of books:");
                 numBooks = scan.nextInt();
                 scan.nextLine();
