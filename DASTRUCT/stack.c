@@ -24,7 +24,7 @@ int main(int argc, char const *argv[]) {
     printf("%d\n", peek(&stck));
     printf("%d\n", pop(&stck));
 }
-
+// Add data on top of the stack
 stack_t* push(stack_t **stack, int data) {
     stack_t *new;
 
@@ -38,24 +38,23 @@ stack_t* push(stack_t **stack, int data) {
     }
     return new;
 }
-
+// Return and delete the top of the stack
 int pop(stack_t **stack) {
-    stack_t *temp = *stack;
-    int data = temp->data;
+    stack_t *temp = *stack; // Copy the top of the stack
+    int data = temp->data;  // Copy data on the top of the stack
 
-    *stack = (*stack)->next;
+    *stack = (*stack)->next; // Move top to next in stack
 
-    free(temp);
+    free(temp); // Delete the top of the stack
 
     return data;
 }
-
+// Return the top of the stack
 int peek(stack_t **stack) {
     stack_t *current = *stack;
     if (stack == NULL) {
         fprintf(stderr, "Stack must not be null\n");
         exit(1);
-    } else {
-        return current->data;
     }
+    return current->data;
 }
