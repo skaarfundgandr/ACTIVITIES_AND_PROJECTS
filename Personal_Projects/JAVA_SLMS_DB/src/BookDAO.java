@@ -46,12 +46,10 @@ public class BookDAO {
         try {
             rs = statement.executeQuery("SELECT * FROM Books WHERE ISBN=" + isbn);
             if (rs.next()) {
-                do {
-                    System.out.println("Title: " + rs.getString("Title"));
-                    System.out.println("Author: " + rs.getString("Author"));
-                    System.out.println("ISBN: " + rs.getString("ISBN"));
-                    System.out.println("Number of books: " + rs.getInt("NumBooks"));
-                } while (rs.next());
+                System.out.println("Title: " + rs.getString("Title"));
+                System.out.println("Author: " + rs.getString("Author"));
+                System.out.println("ISBN: " + rs.getString("ISBN"));
+                System.out.println("Number of books: " + rs.getInt("NumBooks"));
             } else {
                 System.out.println("Book not found");
             }
@@ -72,6 +70,15 @@ public class BookDAO {
             e.printStackTrace();
         }
     }
-
-
+    private boolean isUnique(String isbn){
+        try {
+            rs = statement.executeQuery("SELECT * FROM Books WHERE ISBN=" + isbn);
+            if (rs.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
