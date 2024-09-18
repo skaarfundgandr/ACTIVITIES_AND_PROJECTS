@@ -27,11 +27,11 @@ int main(int argc, char const *argv[]) {
 // Add data on top of the stack
 stack_t* push(stack_t **stack, int data) {
     stack_t *new;
-
+    // Allocate memory
     new = (stack_t *) malloc(sizeof(stack_t));
 
     new->data = data;
-    if (stack == NULL) {
+    if (stack == NULL) {// Initialize stack if stack doesn't exist
         new->next = NULL;
     } else {
         new->next = *stack;
