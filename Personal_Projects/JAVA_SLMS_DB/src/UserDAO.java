@@ -45,11 +45,11 @@ public class UserDAO {
         try {
             rs = statement.executeQuery("SELECT * FROM Users WHERE username=" + username);
             if (rs.next()) {
-                return true;
+                return false;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return true;
     }
 }
