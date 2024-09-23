@@ -1,4 +1,7 @@
 #include <pthread.h>
+#include <sched.h>
+#include <string.h>
+#include <time.h>
 #include <unistd.h>
 #include <stdio.h>
 
@@ -17,7 +20,10 @@ mallocList_t *head, *tail;
 pthread_mutex_t lock_thread;
 
 void *myMalloc(size_t size);
+void *myCalloc(size_t blocks, size_t blockSize);
+void *myRealloc(void *block, size_t blockSize);
 void memFree(void *memBlock);
+
 mallocList_t *getFreeBlock(size_t size);
 
 int main(int argc, char *argv[]){
@@ -81,6 +87,54 @@ void *myMalloc(size_t size) {
     pthread_mutex_unlock(&lock_thread);
     return (void*)(header + 1); // Return address of memory block
 }
+// Allocate and initialize all bytes to zero
+void *myCalloc(size_t blocks, size_t blockSize) {
+    size_t totalSize;
+    void *memBlock;
+    // Make sure args are not NULL
+    if (!blocks || !blockSize) {
+        return NULL;
+    }
+
+    totalSize = blocks * blockSize;
+    // Check for multiplication overflow
+    if (blockSize != totalSize / blocks) {
+        return NULL;
+    }
+
+    memBlock = myMalloc(totalSize);
+    if (!memBlock) {
+        return NULL;
+    }
+
+    memset(memBlock, 0, totalSize); // Set all bytes in block to 0
+
+    return memBlock;
+}
+
+void *myRealloc(void *block, size_t blockSize) {
+    void *memBlock;
+    mallocList_t *header;
+    // Make sure args are not NULL
+    if (!block || !blockSize) {
+        return  myMalloc(blockSize);
+    }
+
+    header = (mallocList_t *) block - 1;
+    // Check if current block can accomodate new size
+    if (header->memBlock.size >= blockSize) {
+        return block;
+    }
+    // Else allocate new memory block
+    memBlock = myMalloc(blockSize);
+
+    if (memBlock) { // Move data from old block to new block
+        memcpy(memBlock, block, header->memBlock.size);
+        memFree(block);
+    }
+    return memBlock;
+}
+
 void memFree(void *memBlock) {
     mallocList_t *header, *temp;
     void *programbreak;
