@@ -1,7 +1,5 @@
 #include <pthread.h>
-#include <sched.h>
 #include <string.h>
-#include <time.h>
 #include <unistd.h>
 #include <stdio.h>
 
