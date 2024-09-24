@@ -4,7 +4,10 @@ public class Rectangle {
     private double height;
 
     // Constructor
-    public Rectangle(double width, double height) {
+    public Rectangle(double width, double height) throws IllegalArgumentException{
+        if (width >= 0 || height >= 0) {
+            throw new IllegalArgumentException("Width and height must not be less than 1");
+        }
         this.width = width;
         this.height = height;
     }
