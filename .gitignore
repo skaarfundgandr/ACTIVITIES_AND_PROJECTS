@@ -5,6 +5,6 @@
 *.jar
 *.db
 *.env
-*/build
+build/
 .vscode/
 OOPROG/Sortation_Algorithms/build
