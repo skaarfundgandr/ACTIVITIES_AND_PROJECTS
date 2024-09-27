@@ -6,25 +6,33 @@ public class Stack {
 
         curr.data = str;
 
-        if (head == null) {
+        if (this.head == null) {
             curr.next = null;
-            head = curr;
+            this.head = curr;
         } else {
             curr.next = head;
-            head = curr;
+            this.head = curr;
         }
     }
 
     public String pop() {
         String data;
 
-        data = head.data;
-        head = head.next;
-
+        data = this.head.data;
+        this.head = this.head.next;
+        
         return data;
     }
 
     public String peek() {
         return head.data;
+    }
+
+    public void delete() {
+        head = null;
+    }
+    
+    public boolean isEmpty() {
+        return head == null;
     }
 }
