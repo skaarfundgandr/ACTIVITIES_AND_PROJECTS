@@ -30,7 +30,7 @@ public class InfixPostfix {
 
         return total;
     }
-
+    // TODO: Rewrite code to handle parenthesis
     private static void sortByPrecedence(String input) {
         int end_idx = 0, start_idx = 0;
         boolean hasParenthesis = false;
