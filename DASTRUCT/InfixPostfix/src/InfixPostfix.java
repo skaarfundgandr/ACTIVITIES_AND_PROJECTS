@@ -40,23 +40,23 @@ public class InfixPostfix {
             if (input.charAt(i) == '(') {
                 hasParenthesis = true;
                 i++;
-                while (hasParenthesis) {
-                    if (input.charAt(i) == ')') {
-                        hasParenthesis = false;
-                        break;
-                    }
-                    if (isNum(input.charAt(i))) {
-                        end_idx = i + 1;
-                    } else if (isOperator(input.charAt(i))) {
-                        stack[0][0].push(input.substring(start_idx, end_idx));
-                        stack[0][checkPrecedence(input.charAt(i))].push(input.substring(i, i + 1));
-                        start_idx = end_idx = i;
-                    } else {
-                        start_idx++;
-                    }
+                start_idx = i;
+            }
+            if (input.charAt(i) == ')') {
+                hasParenthesis = false;
+                i++;
+            }
+            if (hasParenthesis) {
+                while (i < input.length() && isNum(input.charAt(i))) {
+                    end_idx = i + 1;
                     i++;
                 }
-            } else {
+                if (i < input.length() && isOperator(input.charAt(i))) {
+                    stack[1][checkPrecedence(input.charAt(i))].push(input.substring(i, i + 1));
+                }
+                stack[0][0].push(input.substring(start_idx, end_idx));    
+            }
+            else {
                 while (i < input.length() && isNum(input.charAt(i))) {
                     end_idx = i + 1;
                     i++;
