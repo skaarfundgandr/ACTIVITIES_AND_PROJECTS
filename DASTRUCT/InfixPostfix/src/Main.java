@@ -7,7 +7,12 @@ public class Main {
         Scanner scan = new Scanner(System.in);
 
         System.out.print("Enter expression: ");
-        inf = new InfixPostfix(scan.nextLine());
-        System.out.println(inf.evaluate());
+        try {
+            inf = new InfixPostfix(scan.nextLine());
+            System.out.println(inf.evaluate());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        } 
     }
 }

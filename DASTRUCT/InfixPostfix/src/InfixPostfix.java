@@ -1,7 +1,7 @@
 public class InfixPostfix {
     private static Stack stack[][] = new Stack[2][4];
 
-    public InfixPostfix(String input) {
+    public InfixPostfix(String input) throws IllegalArgumentException {
         for (int i = 0; i < stack.length; i++) {
             for (int j = 0; j < stack[i].length; j++) {
                 stack[i][j] = new Stack();
@@ -10,7 +10,7 @@ public class InfixPostfix {
         sortByPrecedence(input);
     }
 
-    public double evaluate() {
+    public double evaluate() throws IllegalArgumentException {
         double num = -1, total = 0;
 
         for (int i = 0; i < stack.length; i++) {
@@ -134,7 +134,6 @@ public class InfixPostfix {
                 result = num1 - num2;
 
                 break;
-
             case '*':
             case 'x':
                 result = num1 * num2;
