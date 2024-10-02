@@ -17,17 +17,22 @@ public class PerishableProduct extends Product {
 
     @Override
     public void updateStock(int amount) throws InvalidQuantityException {
-        quantity += amount;
-        if (amount > 100) {
-            throw new InvalidQuantityException("Error! Amount must not be more than 100");
+        if (amount < 0) {
+            throw new InvalidQuantityException("Quantity cannot be negative");
+        }
+        if ((super.getQuantity() + amount) > 100) {
+            throw new InvalidQuantityException("Cannot exceed maximum quantity of 100 for perishable products.");
+        } else {
+            super.setQuantity(super.getQuantity() + amount);
+            System.out.println(super.getProductName() + " new quantity is " + super.getQuantity());
         }
     }
 
     public String toString() {
-        return  "ProductID: " + productID + "\n" +
-                "Product name: " + productName + "\n" +
-                "Quantity: " + quantity + "\n" +
-                "Price: PHP" + price + "\n" +
+        return  "ProductID: " + super.getProductID() + "\n" +
+                "Product name: " + super.getProductName() + "\n" +
+                "Quantity: " + super.getQuantity() + "\n" +
+                "Price: PHP" + super.getPrice() + "\n" +
                 "Expiration date: " + expirationDate + "\n";
     }
 }

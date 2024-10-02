@@ -8,12 +8,11 @@ public class Inventory implements InventoryOperation {
         System.out.println("Product added " + product.getProductName() + " with quantity " + product.getQuantity());
     }
 
-    public void removeProduct(String productID) {
-        products.removeIf(prod -> prod.getProductID().equals(productID));
-    }
-
-    private boolean isDuplicate(Product product) {
-        String productID = product.getProductID();
-        return products.stream().anyMatch(prod -> prod.getProductID().equals(productID));
+    public void removeProduct(String productID) throws InsufficientStockException {
+        if (products.removeIf(prod -> prod.getProductID().equals(productID))) {
+            System.out.println("Product " + productID + " removed successfully");
+        } else {
+            throw new InsufficientStockException("Cannot find product " + productID);
+        }
     }
 }

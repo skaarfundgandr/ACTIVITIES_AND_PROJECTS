@@ -37,7 +37,20 @@ public class Product {
         return price;
     }
 
-    public void updateStock(int amount) {
+    public void updateStock(int amount) throws InvalidQuantityException {
+        if (amount < 0) {
+            throw new InvalidQuantityException("Quantity cannot be negative!");
+        }
         quantity += amount;
+    }
+
+    public void removeStock(int amount) throws InvalidQuantityException, InsufficientStockException {
+        if (amount < 0) {
+            throw new InvalidQuantityException("Quantity cannot be negative!");
+        }
+        if (quantity - amount < 0) {
+            throw new InsufficientStockException("Insufficient stock for " + productName);
+        }
+        quantity -= amount;
     }
 }

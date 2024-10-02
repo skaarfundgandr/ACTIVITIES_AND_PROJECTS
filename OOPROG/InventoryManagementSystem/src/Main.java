@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        Inventory inv = new Inventory();
+        Inventory inventory = new Inventory();
         // Case 1
         PerishableProduct apple = new PerishableProduct();
         apple.setProductName("Apple");
@@ -8,7 +8,7 @@ public class Main {
         apple.setQuantity(50);
         apple.setPrice(0.5);
         apple.setExpirationDate("2024-12-31");
-        inv.addProduct(apple);
+        inventory.addProduct(apple);
 
         // Case 2
         NonPerishableProduct rice = new NonPerishableProduct();
@@ -17,8 +17,41 @@ public class Main {
         rice.setQuantity(200);
         rice.setPrice(1.0);
         rice.setShelfLife(100);
-        inv.addProduct(rice);
+        inventory.addProduct(rice);
 
         // Case 3
+        try {
+            apple.updateStock(30);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        // Case 4
+        try {
+            apple.updateStock(30);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        // Case 5
+        try {
+            inventory.removeProduct("P001");
+        } catch (InsufficientStockException e) {
+            System.out.println(e.getMessage());
+        }
+
+        // Case 6
+        try {
+            apple.removeStock(60);
+        } catch (InsufficientStockException e) {
+            System.out.println(e.getMessage());
+        }
+
+        // Case 7
+        try {
+            apple.updateStock(-10);
+        } catch (InvalidQuantityException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
