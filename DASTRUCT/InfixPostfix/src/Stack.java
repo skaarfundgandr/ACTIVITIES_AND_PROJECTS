@@ -18,8 +18,8 @@ public class Stack {
     public String pop() {
         String data;
 
-        data = this.head.data;
-        this.head = this.head.next;
+        data = head.data;
+        head = head.next;
         
         return data;
     }
