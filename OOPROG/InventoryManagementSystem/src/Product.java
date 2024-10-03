@@ -48,9 +48,10 @@ public class Product {
         if (amount < 0) {
             throw new InvalidQuantityException("Quantity cannot be negative!");
         }
-        if (quantity - amount < 0) {
+        if ((quantity - amount) < 0) {
             throw new InsufficientStockException("Insufficient stock for " + productName);
         }
         quantity -= amount;
+        System.out.println(productName + " new quantity is " + quantity);
     }
 }

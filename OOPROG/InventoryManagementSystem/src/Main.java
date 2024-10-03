@@ -42,7 +42,7 @@ public class Main {
 
         // Case 6
         try {
-            apple.removeStock(60);
+            apple.removeStock(160);
         } catch (InsufficientStockException e) {
             System.out.println(e.getMessage());
         }
