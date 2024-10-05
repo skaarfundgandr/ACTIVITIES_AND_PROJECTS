@@ -22,7 +22,8 @@ void pop();
 char* peek();
 
 int main(int argc, char const *argv[]){
-    
+    push("Test");
+    printf("%s\n", peek());
 }
 
 void push(char* str){
@@ -32,11 +33,12 @@ void push(char* str){
         return;
     }
 
-    new = malloc(sizeof(node_t));
+    new = (node_t *) malloc(sizeof(node_t));
 
     strcpy(new->data, str);
     if (stack == NULL) {
         new->next = NULL;
+        stack = (stack_t *) malloc(sizeof(stack_t));
         stack->head = stack->tail = new;
     } else {
         new->next = stack->head;
