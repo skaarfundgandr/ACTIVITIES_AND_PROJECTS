@@ -1,41 +1,33 @@
-class Node {
-    Node previous;
-    String data;
-    Node next;
-}
-
 public class NodeList {
     Node head;
     Node tail;
     int counter;
 
     public NodeList() {
-        head = tail = null;
+        head = null;
+        tail = null;
         counter = 0;
     }
 
-    boolean add(Node item) {
+    public boolean add(Node item) {
         Node newNode = item;
-        Node curr;
 
         if (head == null) {
             newNode.previous = null;
-            head = tail = newNode;
+            head = newNode;
+            tail = newNode;
         } else {
-            curr = head;
-            while (curr != null) {
-                curr = curr.next;
-            }
+            tail.next = newNode;
+            newNode.previous = tail;
+            tail = newNode;
         }
-
-        newNode.previous = tail;
-        tail = newNode;
+        
         counter++;
 
         return true;
     }
 
-    boolean delete(int location) {
+    public boolean delete(int location) {
         Node curr;
         int curr_idx = 0;
 
@@ -53,15 +45,17 @@ public class NodeList {
         }
         curr.previous.next = curr.next;
         curr = null;
+        
+        --counter;
 
         return true;
     }
 
-    boolean isEmpty() {
+    public boolean isEmpty() {
         return head == null;
     }
 
-    void display() {
+    public void displayFIFO() {
         Node curr = head;
         while (curr != null) {
             System.out.println(curr.data);
@@ -69,7 +63,11 @@ public class NodeList {
         }
     }
 
-    public static void main(String[] args) {
-        
+    public void displayLIFO() {
+        Node curr = tail;
+        while (curr != null) {
+            System.out.println(curr.data);
+            curr = curr.previous;
+        }
     }
 }
