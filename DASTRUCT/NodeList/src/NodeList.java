@@ -43,9 +43,18 @@ public class NodeList {
         if (curr == null) {
             return false;
         }
-        curr.previous.next = curr.next;
-        curr = null;
-        
+        if (curr == head) {
+            curr = null;
+            head = null;
+        } else if (curr == tail) {
+            tail = tail.previous;
+            curr.previous.next = curr.next;
+            curr = null;
+        } else {
+            curr.previous.next = curr.next;
+            curr = null;
+        }
+
         --counter;
 
         return true;

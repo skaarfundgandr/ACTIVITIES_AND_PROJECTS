@@ -7,7 +7,7 @@ public class TestNodeList {
 
         newNode1.data = "Hello World";
         newNode2.data = "Hi crush";
-        newNode3.data = "what the sigma";
+        newNode3.data = "Helloooo";
 
 
         System.out.println(list.isEmpty());
