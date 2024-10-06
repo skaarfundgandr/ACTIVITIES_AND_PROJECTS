@@ -9,4 +9,4 @@ build/
 .vscode/
 OOPROG/Sortation_Algorithms/build
 .venv/
-
+__pycache__/
