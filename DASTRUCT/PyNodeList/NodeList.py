@@ -47,6 +47,8 @@ class NodeList:
                 currNode.previous.next = currNode.next
 
             currNode = None
+            
+            return True
 
     def isEmpty(self):
         return self.head is None
