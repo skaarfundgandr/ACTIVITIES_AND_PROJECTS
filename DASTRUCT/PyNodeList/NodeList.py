@@ -25,12 +25,12 @@ class NodeList:
         self.count += 1
 
     def delete(self, location):
-        if (self.isEmpty()):
+        if self.isEmpty():
             return False
         else:
             curr_idx = 0
             currNode = self.head
-            while (currNode is not None and curr_idx < location):
+            while currNode is not None and curr_idx < location:
                 currNode = currNode.next
                 curr_idx += 1
             
@@ -45,6 +45,7 @@ class NodeList:
                 self.tail.next = None
             else:
                 currNode.previous.next = currNode.next
+                currNode.next.previous = currNode.previous
 
             currNode = None
             
@@ -66,18 +67,3 @@ class NodeList:
         while currNode is not None:
             print(currNode.data)
             currNode = currNode.previous
-
-if __name__ == "__main__":
-    nodeList = NodeList()
-
-    print(nodeList.isEmpty())
-
-    nodeList.add(Node(1))
-    nodeList.add(Node(2))
-    nodeList.add(Node(3))
-
-    print(nodeList.isEmpty())
-    nodeList.delete(2)
-
-    nodeList.displayFIFO()
-    
