@@ -38,7 +38,7 @@ int main(int argc, char const *argv[]){
         displayLIFO();
     }
 
-    delete(3);
+    delete(0);
     delete(1);
 
     displayFIFO();
@@ -91,7 +91,8 @@ bool delete(int location){
         if (curr == NULL) {
             return false;
         } else if (curr == nodeList->head) {
-            nodeList->head = nodeList->head->next;
+            nodeList->head = curr->next;
+            nodeList->head->previous = curr->previous;
         } else if (curr == nodeList->tail) {
             nodeList->tail = curr->previous;
             nodeList->tail->next = curr->next;
