@@ -16,19 +16,19 @@ public class Main {
         rice.setProductID("NP001");
         rice.setQuantity(200);
         rice.setPrice(1.0);
-        rice.setShelfLife(100);
+        rice.setShelfLife(365);
         inventory.addProduct(rice);
 
         // Case 3
         try {
-            apple.updateStock(30);
+            apple.addStock(90);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
         // Case 4
         try {
-            apple.updateStock(30);
+            apple.removeStock(80);;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -42,14 +42,14 @@ public class Main {
 
         // Case 6
         try {
-            apple.removeStock(160);
+            apple.removeStock(70000);
         } catch (InsufficientStockException e) {
             System.out.println(e.getMessage());
         }
 
         // Case 7
         try {
-            apple.updateStock(-10);
+            apple.addStock(-10);
         } catch (InvalidQuantityException e) {
             System.out.println(e.getMessage());
         }

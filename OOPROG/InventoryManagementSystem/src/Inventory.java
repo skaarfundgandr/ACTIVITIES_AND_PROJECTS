@@ -8,11 +8,11 @@ public class Inventory implements InventoryOperation {
         System.out.println("Product added " + product.getProductName() + " with quantity " + product.getQuantity());
     }
 
-    public void removeProduct(String productID) throws InsufficientStockException {
+    public void removeProduct(String productID) throws ProductNotFoundException {
         if (products.removeIf(prod -> prod.getProductID().equals(productID))) {
             System.out.println("Product " + productID + " removed successfully");
         } else {
-            throw new InsufficientStockException("Cannot find product " + productID);
+            throw new ProductNotFoundException("Cannot find product " + productID);
         }
     }
 }

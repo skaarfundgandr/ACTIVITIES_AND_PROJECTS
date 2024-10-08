@@ -37,7 +37,7 @@ public class Product {
         return price;
     }
 
-    public void updateStock(int amount) throws InvalidQuantityException {
+    public void addStock(int amount) throws InvalidQuantityException {
         if (amount < 0) {
             throw new InvalidQuantityException("Quantity cannot be negative!");
         }
