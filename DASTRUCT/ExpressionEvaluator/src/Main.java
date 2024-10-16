@@ -2,17 +2,17 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        InfixPostfix inf;
+        ExpressionEvaluator exp;
 
         Scanner scan = new Scanner(System.in);
 
         System.out.print("Enter expression: ");
         try {
-            inf = new InfixPostfix(scan.nextLine());
-            System.out.println(inf.evaluate());
+            exp = new ExpressionEvaluator(scan.nextLine());
+            System.out.println(exp.evaluate());
         } catch (IllegalArgumentException e) {
             System.out.println(e);
             e.printStackTrace();
-        } 
+        }
     }
 }

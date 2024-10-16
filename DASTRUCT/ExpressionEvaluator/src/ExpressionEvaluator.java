@@ -1,7 +1,7 @@
-public class InfixPostfix {
+public class ExpressionEvaluator {
     private static Stack stack[][] = new Stack[2][4];
 
-    public InfixPostfix(String input) throws IllegalArgumentException {
+    public ExpressionEvaluator(String input) throws IllegalArgumentException {
         for (int i = 0; i < stack.length; i++) {
             for (int j = 0; j < stack[i].length; j++) {
                 stack[i][j] = new Stack();
