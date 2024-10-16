@@ -21,7 +21,7 @@ public class NodeList {
             newNode.previous = tail;
             tail = newNode;
         }
-        
+
         counter++;
 
         return true;
@@ -44,19 +44,18 @@ public class NodeList {
             return false;
         }
         if (curr == head) {
-            curr = null;
-            head = null;
+            head = head.next;
+            head.previous = curr.previous;
         } else if (curr == tail) {
             tail = tail.previous;
-            curr.previous.next = curr.next;
-            curr = null;
+            tail.next = curr.next;
         } else {
             curr.previous.next = curr.next;
-            curr = null;
+            curr.next.previous = curr.previous;
         }
+        curr = null;
 
         --counter;
-
         return true;
     }
 
