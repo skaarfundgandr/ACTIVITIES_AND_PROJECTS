@@ -35,10 +35,22 @@ public class Stack {
     }
 
     public char peek() {
+        if (isEmpty()) {
+            return '\0';
+        }
         return head.data;
     }
 
     public boolean isEmpty() {
         return head == null;
+    }
+
+    public void displayAll() {
+        Node curr = head;
+
+        while (curr != null) {
+            System.out.println(curr.data);
+            curr = curr.next;
+        }
     }
 }

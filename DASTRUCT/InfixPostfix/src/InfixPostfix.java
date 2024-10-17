@@ -1,8 +1,29 @@
 public class InfixPostfix {
     private Stack stack;
 
-    public String convert() {
-        return null;
+    public InfixPostfix(String s) {
+        Stack temp = new Stack();
+        stack = new Stack();
+
+        for (int i = 0; i < s.length(); ++i) {
+            if (stack.isEmpty()) {
+                stack.push(s.charAt(i));
+            } else if (checkPrecedence(stack.peek()) > checkPrecedence(s.charAt(i))) {
+
+            } else if (checkPrecedence(stack.peek()) < checkPrecedence(s.charAt(i))) {
+
+            } else {
+
+            }
+        }
+    }
+
+    public void convert() {
+
+    }
+
+    public void display() {
+        stack.displayAll();
     }
 
     private static int checkPrecedence(char c) {
