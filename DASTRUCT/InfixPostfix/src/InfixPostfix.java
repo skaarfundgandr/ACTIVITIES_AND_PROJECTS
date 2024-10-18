@@ -1,10 +1,10 @@
 public class InfixPostfix {
     private Stack stack;
 
-    public InfixPostfix(String s) {
+    public InfixPostfix(String exp) {
         stack = new Stack();
 
-        convert(s);
+        convert(exp);
     }
 
     public void display() {
@@ -12,28 +12,34 @@ public class InfixPostfix {
     }
 
     private void convert(String in) {
+        char curr;
         Stack temp = new Stack();
 
         for (int i = 0; i < in.length(); ++i) {
+            curr = in.charAt(i);
+
             if (isAlphaNumeric(in.charAt(i))) {
                 stack.push(in.charAt(i));
             } else if (in.charAt(i) == '(') {
-                stack.push(in.charAt(i));
-            } else if (in.charAt(i) == ')') {
-                
+                temp.push(in.charAt(i));
+            } else if (in.charAt(i) == ')') { // Push elements into final stack until ')' is encountered
+                while (!temp.isEmpty() && temp.peek() != ')') {
+                    stack.push(temp.pop());
+                }
+            } else { // If operator is found push elements into final stack until top is of lower or equal precedence
+                while (!temp.isEmpty() && (checkPrecedence(curr) <= checkPrecedence(temp.peek()))) {
+                    stack.push(temp.pop());
+                }
+                temp.push(curr);
             }
-            // while (checkPrecedence(stack.peek()) > checkPrecedence(in.charAt(i))) {
-            //     if (stack.peek() == '\0') break;
-            //     temp.push(stack.pop());
-            // }
-            // stack.push(in.charAt(i));
-            // while (!temp.isEmpty()) {
-            //     stack.push(temp.pop());
-            // }
+        }
+        while (!temp.isEmpty()) { // Push rest into final stack
+            stack.push(temp.pop());
         }
 
-        temp = null;
+        temp = null; // Deallocate temp stack
     }
+    // Check if character is alphanumeric(0-9, A-Z, a-z) using ASCII values
     private static boolean isAlphaNumeric(char c) {
         int ascii = (int) c;
 
@@ -47,18 +53,22 @@ public class InfixPostfix {
             return true;
         }
     }
+    /*
+     *  Precedence checker for operators
+     *  Lower precedence values are prioritized
+     */
     private static int checkPrecedence(char c) {
         switch (c) {
             case '+':
             case '-':
-                return 3;
+                return 1;
             case '*':
             case '/':
                 return 2;
             case '^':
-                return 1;
+                return 3;
             default:
-                return 0;
+                return 0; // Base condition(if character is not an operator)
         }
     }
 }

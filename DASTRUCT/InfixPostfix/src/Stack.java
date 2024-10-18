@@ -38,7 +38,7 @@ public class Stack {
         } else {
             tail = tail.previous;
         }
-        if (tail != null) {
+        if (tail != null) { // Null check to prevent NullPointerExceptions
             tail.next = null;
         }
         return data;
@@ -46,7 +46,7 @@ public class Stack {
 
     public char peek() {
         if (isEmpty()) {
-            return '\0';
+            return '\0'; // Returns null byte character to prevent reading from null
         }
         return tail.data;
     }
