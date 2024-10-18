@@ -20,7 +20,7 @@ public class Stack {
 
         data = head.data;
         head = head.next;
-        
+
         return data;
     }
 
@@ -31,7 +31,7 @@ public class Stack {
     public void delete() {
         head = null;
     }
-    
+
     public boolean isEmpty() {
         return head == null;
     }
