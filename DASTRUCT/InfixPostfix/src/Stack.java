@@ -1,4 +1,5 @@
 class Node {
+    Node previous;
     char data;
     Node next;
 
@@ -8,17 +9,20 @@ class Node {
 }
 
 public class Stack {
+    private Node tail;
     private Node head;
 
     public boolean push(char c) {
         Node newNode = new Node(c);
+        newNode.previous = null;
+        newNode.next = null;
 
         if (head == null) {
-            head = newNode;
-            head.next = null;
+            head = tail = newNode;
         } else {
-            head.next = newNode;
-            head = head.next;
+            newNode.previous = tail;
+            tail.next = newNode;
+            tail = tail.next;
         }
         return true;
     }
@@ -29,8 +33,14 @@ public class Stack {
             return '\0';
         }
         data = peek();
-        head = head.next;
-
+        if (head == tail) {
+            head = tail = null;
+        } else {
+            tail = tail.previous;
+        }
+        if (tail != null) {
+            tail.next = null;
+        }
         return data;
     }
 
@@ -38,19 +48,20 @@ public class Stack {
         if (isEmpty()) {
             return '\0';
         }
-        return head.data;
+        return tail.data;
     }
 
     public boolean isEmpty() {
-        return head == null;
+        return tail == null;
     }
 
     public void displayAll() {
         Node curr = head;
 
         while (curr != null) {
-            System.out.println(curr.data);
+            System.out.print(curr.data);
             curr = curr.next;
         }
+        System.out.println();
     }
 }
