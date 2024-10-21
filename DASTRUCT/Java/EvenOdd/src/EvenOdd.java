@@ -11,7 +11,7 @@ public class EvenOdd {
         System.out.println("Enter 10 numbers:");
         for (int index = 0; index < 10; index++) {
             input = scan.nextInt();
-            
+
             if (input % 2 == 0) {
                 even[numEven] = input;
                 ++numEven;

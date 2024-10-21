@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class StackMenu {
     private String[] str;
     private int count;
-    
+
     public StackMenu(int size) {
         if (size <= 0) {
             System.out.println("Invalid size! Size must not be less than 1! Size is now reverted to default");
@@ -55,13 +55,13 @@ public class StackMenu {
     public static void main(String[] args) {
         char choice;
         StackMenu stack;
-        
+
         Scanner scan = new Scanner(System.in);
-        
+
         System.out.print("Enter size: ");
         stack = new StackMenu(scan.nextInt());
         scan.nextLine();
-        
+
         System.out.println("-- Stack Array Menu --");
         System.out.println("1] Push an item");
         System.out.println("2] Pop");

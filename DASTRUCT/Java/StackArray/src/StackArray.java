@@ -49,9 +49,9 @@ public class StackArray {
     }
     public static void main(String[] args) {
         StackArray stack = new StackArray(5);
-        
+
         Scanner scan = new Scanner(System.in);
-        
+
         System.out.println("Enter elements to fill the stack");
         while (stack.push(scan.nextLine())) {} // Fill the stack
 
