@@ -39,10 +39,12 @@ class NodeList:
             
             if currNode is self.head:
                 self.head = self.head.next
-                self.head.previous = None
+                if self.head is not None:
+                    self.head.previous = None
             elif currNode is self.tail:
                 self.tail = self.tail.previous
-                self.tail.next = None
+                if self.tail is not None:
+                    self.tail.next = None
             else:
                 currNode.previous.next = currNode.next
                 currNode.next.previous = currNode.previous
