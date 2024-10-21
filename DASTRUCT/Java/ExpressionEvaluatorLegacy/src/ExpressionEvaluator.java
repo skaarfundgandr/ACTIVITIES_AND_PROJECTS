@@ -54,7 +54,7 @@ public class ExpressionEvaluator {
                 if (i < input.length() && isOperator(input.charAt(i))) {
                     stack[1][checkPrecedence(input.charAt(i))].push(input.substring(i, i + 1));
                 }
-                stack[0][0].push(input.substring(start_idx, end_idx));    
+                stack[0][0].push(input.substring(start_idx, end_idx));
             }
             else {
                 while (i < input.length() && isNum(input.charAt(i))) {
@@ -68,7 +68,7 @@ public class ExpressionEvaluator {
             }
         }
     }
-    
+
     private static int checkPrecedence(char operator) throws IllegalArgumentException {
         switch (operator) {
             case '^':
@@ -80,7 +80,7 @@ public class ExpressionEvaluator {
             case '+':
             case '-':
                 return 3;
-        
+
             default:
                 throw new IllegalArgumentException("Invalid operator on checkPrecedence");
         }

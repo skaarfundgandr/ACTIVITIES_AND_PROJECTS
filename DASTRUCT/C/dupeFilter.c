@@ -10,7 +10,7 @@ int main(int argc, char const *argv[]){
         duplicate = false;
 
         scanf("%d", nums + i);
-        
+
         for (int j = 0; j < i; ++j) {
             if (nums[j] == nums[i]) {
                 duplicate = true;
