@@ -18,14 +18,4 @@ public class ParenthesisChecker {
 
         return stack.isEmpty();
     }
-
-    public static void main(String[] args) {
-        ParenthesisChecker parenthesisChecker = new ParenthesisChecker();
-
-        if (parenthesisChecker.check("(())")) {
-            System.out.println("Valid expression");
-        } else {
-            System.out.println("Invalid expression");
-        }
-    }
 }

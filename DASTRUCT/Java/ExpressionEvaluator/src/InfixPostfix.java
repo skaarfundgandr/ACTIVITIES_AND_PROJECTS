@@ -22,7 +22,7 @@ public class InfixPostfix {
         for (int i = 0; i < in.length(); ++i) {
             curr = in.charAt(i);
 
-            if (isAlphaNumeric(in.charAt(i))) {
+            if (isNum(in.charAt(i))) {
                 stack.push(in.charAt(i));
             } else if (in.charAt(i) == '(') {
                 temp.push(in.charAt(i));
@@ -44,19 +44,11 @@ public class InfixPostfix {
 
         temp = null; // Deallocate temp stack
     }
-    // Check if character is alphanumeric(0-9, A-Z, a-z) using ASCII values
-    private static boolean isAlphaNumeric(char c) {
+    // Check if character is a number
+    private static boolean isNum(char c) {
         int ascii = (int) c;
 
-        if (ascii < 48) {
-            return false;
-        } else if (ascii > 57 && ascii < 65) {
-            return false;
-        } else if (ascii < 97 && ascii > 122) {
-            return false;
-        } else {
-            return true;
-        }
+        return (ascii > 47 && ascii < 58);
     }
     /*
      *  Precedence checker for operators
