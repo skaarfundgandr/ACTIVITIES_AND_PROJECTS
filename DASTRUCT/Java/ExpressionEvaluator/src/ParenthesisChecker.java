@@ -6,13 +6,19 @@ public class ParenthesisChecker {
     }
 
     public boolean check(String str) {
+        char currentCharacter;
+
         for (int i = 0; i < str.length(); i++) {
-            if (stack.isEmpty()) {
-                stack.push(str.charAt(i));
-            } else if ((stack.peek() == '(') && (str.charAt(i) == ')')) {
-                stack.pop();
-            } else {
-                stack.push(str.charAt(i));
+            currentCharacter = str.charAt(i);
+
+            if (currentCharacter == '(' || currentCharacter == ')') {
+                if (stack.isEmpty()) {
+                    stack.push(currentCharacter);
+                } else if ((stack.peek() == '(') && (currentCharacter == ')')) {
+                    stack.pop();
+                } else {
+                    stack.push(currentCharacter);
+                }
             }
         }
 

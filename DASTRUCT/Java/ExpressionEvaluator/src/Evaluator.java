@@ -7,8 +7,9 @@ public class Evaluator {
         if (exp.contains("(") || exp.contains(")")) {
             if ((new ParenthesisChecker()).check(exp)) {
                 infix = (new InfixPostfix(exp)).getExpression();
+            } else {
+                throw new IllegalArgumentException("Expression is not a valid expression");
             }
-            throw new IllegalArgumentException("Expression is not a valid expression");
         } else {
             infix = (new InfixPostfix(exp)).getExpression();
         }
@@ -33,7 +34,7 @@ public class Evaluator {
         switch (operator) {
             case '+':
                 result = num2 + num1;
-                
+
                 break;
             case '-':
                 result = num2 - num1;
@@ -46,7 +47,7 @@ public class Evaluator {
                 break;
             case '/':
                 result = num2 / num1;
-                
+
                 break;
             case '^':
                 result = Math.pow(num2, num1);
@@ -57,7 +58,7 @@ public class Evaluator {
         }
         return result;
     }
-    
+
     private static boolean isNum(char ch) {
         int ascii = (int) ch;
 
