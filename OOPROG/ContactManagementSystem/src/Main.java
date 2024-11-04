@@ -33,6 +33,7 @@ public class Main {
                     System.out.print("Enter contact name: ");
                     contactList.addContact(scan.nextLine());
                     fileHandler.start();
+                    System.out.println("Contact added");
 
                     break;
                 case '2':
@@ -49,6 +50,7 @@ public class Main {
                         try {
                             contactList.updateContact(input, scan.nextLine());
                             fileHandler.start();
+                            System.out.println("Contact updated");
                         } catch (ContactNotFoundException e) {
                             System.out.println(e.getMessage());
                         }
@@ -65,6 +67,7 @@ public class Main {
                             contactList.deleteContact(scan.nextLine());
 
                             fileHandler.start();
+                            System.out.println("Contact deleted");
                         } catch (ContactNotFoundException e) {
                             System.out.println(e.getMessage());
                         }
