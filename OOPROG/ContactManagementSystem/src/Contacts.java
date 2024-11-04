@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 class Contact {
     Contact previous;
     String name;
@@ -101,15 +99,18 @@ public class Contacts {
         return tail.name;
     }
 
-    public String[] toArrStrings() {
-        Contact currContact = head;
-        ArrayList<String> arrayList = new ArrayList<String>();
+    public String toString() {
+        if (isEmpty()) {
+            return null;
+        } else {
+            String str = "";
+            Contact currContact = head;
+            while (currContact != null) {
+                str = str + currContact.name + '\n';
+                currContact = currContact.next;
+            }
 
-        while (currContact != null){
-            arrayList.add(currContact.name);
-            currContact = currContact.next;
+            return str;
         }
-
-        return arrayList.toArray(new String[arrayList.size()]);
     }
 }

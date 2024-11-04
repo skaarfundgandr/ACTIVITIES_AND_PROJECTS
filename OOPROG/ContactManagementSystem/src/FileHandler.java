@@ -22,11 +22,7 @@ public class FileHandler implements Runnable {
 
     private void updateFileContents() {
         try (FileWriter fw = new FileWriter(file, false)) {
-            String[] arrStrings = contacts.toArrStrings();
-
-            for (String string : arrStrings) {
-                fw.write(string + "\n");
-            }
+            fw.write(contacts.toString());
             fw.close();
         } catch (IOException e) {
             e.printStackTrace();

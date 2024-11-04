@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         char choice;
-
         String input;
 
         File contactsFile = new File("contacts.txt");
