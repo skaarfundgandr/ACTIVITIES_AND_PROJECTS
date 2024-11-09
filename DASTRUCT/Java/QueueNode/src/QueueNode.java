@@ -35,12 +35,38 @@ public class QueueNode {
         return false;
     }
 
-    public void front() {
+    public String front() {
         if (!isEmpty()) {
-            System.out.println("[" + head.data + "]");
+            return "[" + head.data + "]";
         } else {
-            System.out.println("Queue is empty");
+            return "Queue is empty";
         }
+    }
+
+    public String last() {
+        if (!isEmpty()) {
+            return "[" + tail.data + "]";
+        }
+        return "Queue is empty";
+    }
+    @Override
+    public String toString() {
+        String str = "";
+
+        if (isEmpty()) {
+            str += "Queue is empty";
+        } else {
+            Node currNode = head;
+
+            str += "First: " + front() + "\n";
+            str += "Last: " + last() + "\n\n";
+            while (currNode != null) {
+                str += "[" + currNode.data + "] -> ";
+                currNode = currNode.next;
+            }
+            str += "NULL";
+        }
+        return str;
     }
 
     public void display() {
@@ -57,6 +83,7 @@ public class QueueNode {
             System.out.println();
         }
     }
+
     public boolean isEmpty() {
         return head == null && tail == null;
     }
