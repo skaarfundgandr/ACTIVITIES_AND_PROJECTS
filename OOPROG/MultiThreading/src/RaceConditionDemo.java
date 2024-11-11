@@ -2,33 +2,27 @@ class RaceCondition implements Runnable {
     private int count = 0;
 
     public void increment() {
-        try {
-            Thread.sleep(10);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         count++;
     }
 
     public void decrement() {
-        try {
-            Thread.sleep(10);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         count--;
     }
 
     public int getCount() {
         return count;
     }
-
+    // Race Condition. Leads to undefined behavior
     @Override
     public void run() {
-        this.increment();
-        System.out.println("Count for thread " + Thread.currentThread().getName() + " after increment: " + this.getCount());
-        this.decrement();
-        System.out.println("Count for thread " + Thread.currentThread().getName() + " after decrement: " + this.getCount());
+        increment();
+        System.out.println("Count for thread " +
+                            Thread.currentThread().getName() +
+                            " after increment: " + getCount());
+        decrement();
+        System.out.println("Count for thread " +
+                            Thread.currentThread().getName() +
+                            " after decrement: " + getCount());
     }
 }
 

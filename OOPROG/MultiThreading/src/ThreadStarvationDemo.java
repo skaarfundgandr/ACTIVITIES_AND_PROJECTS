@@ -1,6 +1,9 @@
 class ThreadStarvation implements Runnable {
     @Override
     public void run() {
+        // Thread obtains a lock on the entire code block
+        // Blocking other threads to execute until the thread that has
+        // The lock is finished
         synchronized(this) {
             System.out.println("Thread created!");
             try {

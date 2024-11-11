@@ -5,7 +5,8 @@ class Deadlock implements Runnable {
         this.a = a;
         this.b = b;
     }
-    // Leads to deadlock
+    // This method leads to a deadlock
+    // When b is used by another thread
     private void printBothStrings() {
         synchronized(a) {
             System.out.println(a);
