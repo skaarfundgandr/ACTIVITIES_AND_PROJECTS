@@ -2,7 +2,6 @@
 *.o
 *.exe
 *.txt
-*.jar
 *.db
 *.env
 build/
