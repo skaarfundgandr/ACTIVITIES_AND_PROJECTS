@@ -11,5 +11,7 @@ public class RunnableDemo {
         Thread thread = new Thread(task);
 
         thread.start();
+        Thread thread2 = new Thread(task);
+        thread2.start();
     }
 }
