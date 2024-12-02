@@ -5,17 +5,18 @@ import java.awt.event.*;
 class LoginPane extends JPanel {
     private JTextField userField;
     private JPasswordField passwordField;
-    private JButton loginButton, registerButton;
+    private JButton loginButton;
+    private LoginPage loginPage;
 
-    public LoginPane() {
+    public LoginPane(LoginPage login) {
         initialize();
+        loginPage = login;
     }
 
     private void initialize() {
         this.userField = new JTextField(20);
         this.passwordField = new JPasswordField(20);
         this.loginButton = new JButton("Login");
-        this.registerButton = new JButton("Register");
 
         userField.setText("Enter your username");
         userField.setForeground(Color.GRAY);
@@ -72,6 +73,7 @@ class LoginPane extends JPanel {
             @Override
             public void mouseReleased(MouseEvent e) {}
         });
+
         setLayout(new GridBagLayout());
         GridBagConstraints gBagConstraints = new GridBagConstraints();
         gBagConstraints.gridx = 0;
@@ -94,16 +96,16 @@ class LoginPane extends JPanel {
         add(passwordField, gBagConstraints);
         gBagConstraints.gridy++;
         gBagConstraints.fill = GridBagConstraints.NONE;
-        gBagConstraints.gridwidth = 2;
 
         add(loginButton, gBagConstraints);
-        gBagConstraints.anchor = GridBagConstraints.EAST;
-        add(registerButton, gBagConstraints);
     }
 
     private void loginButtonClicked() {
         if (userField.getText().equals("root") && new String(passwordField.getPassword()).equals("root")) {
             JOptionPane.showMessageDialog(this, "Login successful");
+            new CalculatorFrame().setVisible(true);
+            loginPage.setVisible(false);
+            loginPage.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "User not found");
         }
@@ -116,10 +118,10 @@ public class LoginPage extends JFrame {
     }
 
     private void initialize() {
-        setTitle("Login Page");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Login");
         setLayout(new BorderLayout());
-        add(new LoginPane());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        add(new LoginPane(this));
         setLocationRelativeTo(null);
         setResizable(false);
         pack();
