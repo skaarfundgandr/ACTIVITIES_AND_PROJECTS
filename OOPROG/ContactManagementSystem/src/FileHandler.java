@@ -65,6 +65,6 @@ public class FileHandler implements Runnable {
 
     public void start(){
         task = new Thread(this);
-        task.run();
+        task.start();
     }
 }
