@@ -17,8 +17,12 @@ public class Menu {
         while (choice != '3') {
             if (choice == '1') {
                 System.out.println("Enter infix expression");
-                InfixPostfix inf = new InfixPostfix(scan.nextLine());
-                System.out.println("Postfix: " + inf.getExpression());
+                try {
+                    InfixPostfix inf = new InfixPostfix(scan.nextLine());
+                    System.out.println("Postfix: " + inf.getExpression());
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             } else if (choice == '2') {
                 System.out.println("Enter Expression: ");
                 try {

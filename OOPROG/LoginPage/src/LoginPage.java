@@ -5,7 +5,7 @@ import java.awt.event.*;
 class LoginPane extends JPanel {
     private JTextField userField;
     private JPasswordField passwordField;
-    private JButton loginButton;
+    private JButton loginButton, registerButton;
     private LoginPage loginPage;
 
     public LoginPane(LoginPage login) {
@@ -17,6 +17,7 @@ class LoginPane extends JPanel {
         this.userField = new JTextField(20);
         this.passwordField = new JPasswordField(20);
         this.loginButton = new JButton("Login");
+        this.registerButton = new JButton("Register");
 
         userField.setText("Enter your username");
         userField.setForeground(Color.GRAY);
@@ -74,6 +75,13 @@ class LoginPane extends JPanel {
             public void mouseReleased(MouseEvent e) {}
         });
 
+        registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                registerButtonClicked();
+            }
+        });
+
         setLayout(new GridBagLayout());
         GridBagConstraints gBagConstraints = new GridBagConstraints();
         gBagConstraints.gridx = 0;
@@ -98,6 +106,8 @@ class LoginPane extends JPanel {
         gBagConstraints.fill = GridBagConstraints.NONE;
 
         add(loginButton, gBagConstraints);
+        gBagConstraints.anchor = GridBagConstraints.EAST;
+        add(registerButton, gBagConstraints);
     }
 
     private void loginButtonClicked() {
@@ -109,6 +119,12 @@ class LoginPane extends JPanel {
         } else {
             JOptionPane.showMessageDialog(this, "User not found");
         }
+    }
+
+    private void registerButtonClicked() {
+        new RegisterPage().setVisible(true);
+        loginPage.setVisible(false);
+        loginPage.dispose();
     }
 }
 
