@@ -1,15 +1,14 @@
-class Node {
-    Node previous;
-    String data;
-    Node next;
-
-    public Node(String data) {
-        this.data = data;
-        next = previous = null;
-    }
-}
-
 public class NodeList {
+    class Node {
+        Node previous;
+        String data;
+        Node next;
+
+        public Node(String data) {
+            this.data = data;
+            next = previous = null;
+        }
+    }
     Node head;
     Node tail;
     int counter;
@@ -54,7 +53,9 @@ public class NodeList {
         if (curr == null) {
             return false;
         }
-        if (curr == head) {
+        if (curr == head && curr == tail) {
+            head = tail = null;
+        } else if (curr == head) {
             head = head.next;
             head.previous = curr.previous;
         } else if (curr == tail) {

@@ -1,14 +1,13 @@
-class NodeDouble {
-    NodeDouble previous;
-    double data;
-    NodeDouble next;
-
-    public NodeDouble(double data) {
-        this.data = data;
-    }
-}
-
 class DoubleStack {
+    class NodeDouble {
+        NodeDouble previous;
+        double data;
+        NodeDouble next;
+
+        public NodeDouble(double data) {
+            this.data = data;
+        }
+    }
     private NodeDouble head;
     private NodeDouble tail;
 

@@ -1,8 +1,8 @@
-class Node {
-    char data;
-    Node next;
-}
 class Stack {
+    class Node {
+        char data;
+        Node next;
+    }
     public Node head;
     
     public void push(char character) {

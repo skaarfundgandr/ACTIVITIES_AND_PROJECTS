@@ -1,14 +1,13 @@
-class Node {
-    Node previous;
-    char data;
-    Node next;
-
-    public Node(char data) {
-        this.data = data;
-    }
-}
-
 class Stack {
+    class Node {
+        Node previous;
+        char data;
+        Node next;
+
+        public Node(char data) {
+            this.data = data;
+        }
+    }
     private Node tail;
     private Node head;
 
@@ -103,7 +102,7 @@ public class InfixPostfix {
         if (new ParenthesisChecker().check(in)) {
             for (int i = 0; i < in.length(); ++i) {
                 curr = in.charAt(i);
-    
+
                 if (isNum(in.charAt(i))) {
                     stack.push(in.charAt(i));
                 } else if (in.charAt(i) == '(') {

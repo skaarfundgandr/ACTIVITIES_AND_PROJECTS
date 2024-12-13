@@ -6,7 +6,7 @@ public class ExpressionEvaluatorMenu {
         char choice;
 
         Scanner scan = new Scanner(System.in);
-        
+
         System.out.println("Simple infix to postfix program");
         System.out.println("1. Convert to postfix");
         System.out.println("2. Evaluate");

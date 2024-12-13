@@ -11,7 +11,7 @@ public class Main {
             System.out.println("1] Duplicate Filter");
             System.out.println("2] Even or Odd");
             System.out.println("3] Stack Array");
-            System.out.println("4] Stack Node");
+            System.out.println("4] Node List");
             System.out.println("5] Infix to Postfix with Evaluator");
             System.out.println("6] Queue Array");
             System.out.println("7] Queue Node");
@@ -34,7 +34,7 @@ public class Main {
 
                     break;
                 case '4':
-
+                    new NodeListMenu().menu();
 
                     break;
                 case '5':
@@ -47,6 +47,10 @@ public class Main {
                     break;
                 case '7':
                     new QueueNodeMenu().menu();
+
+                    break;
+                case 'x':
+                    System.out.println("Thank you for using this program");
 
                     break;
                 default:

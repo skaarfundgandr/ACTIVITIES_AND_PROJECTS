@@ -1,15 +1,14 @@
 import java.util.Scanner;
 
-class Node {
-    String data;
-    Node next;
-
-    public Node(String str) {
-        this.data = str;
-    }
-}
-
 class QueueNode {
+    class Node {
+        String data;
+        Node next;
+
+        public Node(String str) {
+            this.data = str;
+        }
+    }
     Node head;
     Node tail;
 
