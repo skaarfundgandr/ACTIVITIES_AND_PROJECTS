@@ -8,14 +8,15 @@ public class Main {
 
         do {
             System.out.println("-- Data struct activities Menu --");
-            System.out.println("1] Duplicate Filter");
-            System.out.println("2] Even or Odd");
-            System.out.println("3] Stack Array");
-            System.out.println("4] Stack Node");
-            System.out.println("5] Node List");
-            System.out.println("6] Infix to Postfix with Evaluator");
-            System.out.println("7] Queue Array");
-            System.out.println("8] Queue Node");
+            System.out.println("1] Sum Product");
+            System.out.println("2] Duplicate Filter");
+            System.out.println("3] Even or Odd");
+            System.out.println("4] Stack Array");
+            System.out.println("5] Stack Node");
+            System.out.println("6] Node List");
+            System.out.println("7] Infix to Postfix with Evaluator");
+            System.out.println("8] Queue Array");
+            System.out.println("9] Queue Node");
             System.out.println("x] Exit");
 
             System.out.print("Enter your choice: ");
@@ -23,34 +24,38 @@ public class Main {
 
             switch (choice) {
                 case '1':
-                    new DupeFilter().menu();
+                    new SumProduct().menu();
 
                     break;
                 case '2':
-                    new EvenOdd().menu();
+                    new DupeFilter().menu();
 
                     break;
                 case '3':
-                    new StackArrayMenu().menu();
+                    new EvenOdd().menu();
 
                     break;
                 case '4':
-                    new StackNodeMenu().menu();
+                    new StackArrayMenu().menu();
 
                     break;
                 case '5':
-                    new NodeListMenu().menu();
+                    new StackNodeMenu().menu();
 
                     break;
                 case '6':
-                    new ExpressionEvaluatorMenu().menu();
+                    new NodeListMenu().menu();
 
                     break;
                 case '7':
-                    new QueueArrayMenu().menu();
+                    new ExpressionEvaluatorMenu().menu();
 
                     break;
                 case '8':
+                    new QueueArrayMenu().menu();
+
+                    break;
+                case '9':
                     new QueueNodeMenu().menu();
 
                     break;

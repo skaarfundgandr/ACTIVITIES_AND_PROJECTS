@@ -4,7 +4,7 @@ class Stack {
         Node next;
     }
     public Node head;
-    
+
     public void push(char character) {
         Node curr = new Node();
 
@@ -17,7 +17,6 @@ class Stack {
             curr.next = head;
             head = curr;
         }
-        
     }
 
     public char peek() {
