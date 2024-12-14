@@ -11,10 +11,11 @@ public class Main {
             System.out.println("1] Duplicate Filter");
             System.out.println("2] Even or Odd");
             System.out.println("3] Stack Array");
-            System.out.println("4] Node List");
-            System.out.println("5] Infix to Postfix with Evaluator");
-            System.out.println("6] Queue Array");
-            System.out.println("7] Queue Node");
+            System.out.println("4] Stack Node");
+            System.out.println("5] Node List");
+            System.out.println("6] Infix to Postfix with Evaluator");
+            System.out.println("7] Queue Array");
+            System.out.println("8] Queue Node");
             System.out.println("x] Exit");
 
             System.out.print("Enter your choice: ");
@@ -34,18 +35,22 @@ public class Main {
 
                     break;
                 case '4':
-                    new NodeListMenu().menu();
+                    new StackNodeMenu().menu();
 
                     break;
                 case '5':
-                    new ExpressionEvaluatorMenu().menu();
+                    new NodeListMenu().menu();
 
                     break;
                 case '6':
-                    new QueueArrayMenu().menu();
+                    new ExpressionEvaluatorMenu().menu();
 
                     break;
                 case '7':
+                    new QueueArrayMenu().menu();
+
+                    break;
+                case '8':
                     new QueueNodeMenu().menu();
 
                     break;
