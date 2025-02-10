@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include <string.h>
+
+int getLength(char *str);
 
 int main (int argc, char const **argv) {
     int len, end_idx, palindrome = 1;
@@ -8,7 +9,7 @@ int main (int argc, char const **argv) {
     printf("Enter a string: ");
     scanf("%s", input);
 
-    len = strlen(input);
+    len = getLength(input);
     end_idx = len - 1;
 
     for (int i = 0; i < len / 2; ++i) {
@@ -23,4 +24,10 @@ int main (int argc, char const **argv) {
     } else {
         printf("Not palindrome\n");
     }
+}
+
+int getLength(char *str) {
+    int length;
+    for (length = 0; str[length] != '\0'; length++);
+    return length;
 }
