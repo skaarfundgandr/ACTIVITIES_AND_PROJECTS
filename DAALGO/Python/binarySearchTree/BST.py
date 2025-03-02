@@ -109,8 +109,8 @@ class BST:
         elif target.rightChild is None:
             self.transplant(target, target.leftChild)
         else:
-            successor: Node = self.minimum(target)
-            if successor is not successor.rightChild:
+            successor: Node = self.minimum(target.rightChild)
+            if successor is not target.rightChild:
                 self.transplant(successor, successor.rightChild)
                 successor.rightChild = target.rightChild
                 successor.rightChild.parent = successor
