@@ -23,7 +23,7 @@ class BST:
 
         newNode.parent = parentNode
 
-        if curr is None:
+        if parentNode is None:
             self.root = newNode
         elif newNode.key < parentNode.key:
             parentNode.leftChild = newNode
@@ -46,13 +46,11 @@ class BST:
 
         return current
 
-    def inorderWalk(self, parent: Node = None) -> None:
-        current = self.root if parent is None else parent
-
-        if current is not None:
-            self.inorderWalk(current.leftChild)
-            print(current.key, end=" ")
-            self.inorderWalk(current.rightChild)
+    def inorderWalk(self, parent) -> None:
+        if parent is not None:
+            self.inorderWalk(parent.leftChild)
+            print(parent.key, end=" ")
+            self.inorderWalk(parent.rightChild)
 
     def search(self, key) -> Node:
         current = self.root
