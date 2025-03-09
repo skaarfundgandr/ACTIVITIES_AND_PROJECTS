@@ -1,10 +1,10 @@
 class Node:
-        def __init__(self, key, data: any = None):
-            self.parent = None
-            self.leftChild = None
-            self.rightChild = None
-            self.data = None if data is None else data
-            self.key = key
+    def __init__(self, key, data: any = None):
+        self.parent = None
+        self.leftChild = None
+        self.rightChild = None
+        self.data = None if data is None else data
+        self.key = key
 
 class BST:
     def __init__(self):
