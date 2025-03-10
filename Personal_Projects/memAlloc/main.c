@@ -54,7 +54,7 @@ void *myMalloc(size_t size) {
 
     pthread_mutex_lock(&lock_thread); // Lock thread
 
-    header = getFreeBlock(size); 
+    header = getFreeBlock(size);
     // Mark memory block as in use if free block is found
     if (header) {
         header->memBlock.is_free = 0;
@@ -161,7 +161,7 @@ void memFree(void *memBlock) {
             }
         }
         sbrk(0 - sizeof(mallocList_t) - header->memBlock.size); // Shrink heap by the size of block to be freed
-        
+
         pthread_mutex_unlock(&lock_thread);
         return;
     }
