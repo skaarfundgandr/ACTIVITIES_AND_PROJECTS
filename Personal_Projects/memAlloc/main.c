@@ -34,12 +34,9 @@ int main(int argc, char *argv[]){
     *(testArr+1) = 8;
     *testArr2 = 9;
     *(testArr2+1) = 5;
-
-    printf("%d\n", *testArr);
-    printf("%d\n", *(testArr + 1));
-
+    memFree(testArr);
+    memFree(testArr2);
     printf("%d\n", *testArr2);
-    printf("%d\n", *(testArr2+1));
     return 0;
 }
 
@@ -171,7 +168,7 @@ void memFree(void *memBlock) {
 
 mallocList_t *getFreeBlock(size_t size) {
     mallocList_t *current = head;
-
+    // Search for a free block of the same size in the allocated blocks
     while (current) {
         if (current->memBlock.is_free && current->memBlock.size >= size) {
             return current;
