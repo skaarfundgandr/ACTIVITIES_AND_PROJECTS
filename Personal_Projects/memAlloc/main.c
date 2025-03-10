@@ -11,12 +11,12 @@ typedef union mallocList {
         unsigned is_free;
         union mallocList *next;
     } memBlock;
-    ALIGN alBytes;
+    ALIGN alBytes; // Makes sure that the data structure is aligned to 16 Bytes
 } mallocList_t;
-
+// Global variable declarations
 mallocList_t *head, *tail;
 pthread_mutex_t lock_thread;
-
+// Function declarations
 void *myMalloc(size_t size);
 void *myCalloc(size_t blocks, size_t blockSize);
 void *myRealloc(void *block, size_t blockSize);
@@ -99,7 +99,7 @@ void *myCalloc(size_t blocks, size_t blockSize) {
     if (blockSize != totalSize / blocks) {
         return NULL;
     }
-
+    // Allocate the block
     memBlock = myMalloc(totalSize);
     if (!memBlock) {
         return NULL;
