@@ -3,7 +3,7 @@ class Node:
         self.parent = None
         self.leftChild = None
         self.rightChild = None
-        self.data = None if data is None else data
+        self.data = data
         self.key = key
 
 class BST:
@@ -31,7 +31,7 @@ class BST:
             parentNode.rightChild = newNode
 
     def minimum(self, parent: Node = None) -> Node:
-        current = self.root if parent is None else parent
+        current = parent
 
         while current.leftChild is not None:
             current = current.leftChild
@@ -39,7 +39,7 @@ class BST:
         return current
 
     def maximum(self, parent: Node = None) -> Node:
-        current = self.root if parent is None else parent
+        current = parent
 
         while current.rightChild is not None:
             current = current.rightChild
