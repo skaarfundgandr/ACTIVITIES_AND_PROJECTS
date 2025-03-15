@@ -9,7 +9,7 @@ class Graph:
     # Add edges
     def add_edge(self, v1, v2):
         if v1 == v2:
-            print(f"Same vertex {v1} and ")
+            print(f"Same vertex {v1} and {v2}")
         self.adjMatrix[v1][v2] = 1
         self.adjMatrix[v2][v1] = 1
 
