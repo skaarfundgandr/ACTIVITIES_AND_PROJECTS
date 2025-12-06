@@ -1,20 +1,20 @@
-class MyNode {
-    value: number;
-    next: MyNode | null;
+class MyNode<T> {
+    value: T;
+    next: MyNode<T> | null;
 
-    constructor(value: number) {
+    constructor(value: T) {
         this.value = value;
         this.next = null;
     }
 }
 
-class MyStack {
-    head: MyNode | null;
-    tail: MyNode | null;
+class MyStack<T> {
+    head: MyNode<T> | null;
+    tail: MyNode<T> | null;
 
     constructor();
-    constructor(node: MyNode);
-    constructor(node?: MyNode) {
+    constructor(node: MyNode<T>);
+    constructor(node?: MyNode<T>) {
         this.head = node ?? null;
         this.tail = node ?? null;
     }
@@ -23,7 +23,10 @@ class MyStack {
         return this.head === null;
     }
 
-    push (node: MyNode): boolean {
+    push(nodeOrValue: MyNode<T> | T): boolean {
+        const node: MyNode<T> = nodeOrValue instanceof MyNode ? nodeOrValue
+            : new MyNode(nodeOrValue);
+
         if (this.isEmpty()) {
             this.head = node;
             this.tail = node;
@@ -35,12 +38,12 @@ class MyStack {
         return true;
     }
 
-    pop(): MyNode | null {
+    pop(): MyNode<T> | null {
         if (this.isEmpty()) {
             return null;
         }
 
-        const poppedNode: MyNode | null = this.head;
+        const poppedNode: MyNode<T> | null = this.head;
         this.head = this.head!.next;
 
         if (this.head === null) {
@@ -51,7 +54,7 @@ class MyStack {
         return poppedNode;
     }
 
-    peek(): MyNode | null {
+    peek(): MyNode<T> | null {
         return this.head;
     }
 
@@ -61,10 +64,10 @@ class MyStack {
 
     toString(): string {
         let result: string = '';
-        let currentNode: MyNode | null = this.head;
+        let currentNode: MyNode<T> | null = this.head;
 
         while (currentNode !== null) {
-            result += currentNode.value.toString() + (currentNode.next ? ' -> ' : '');
+            result += String(currentNode.value) + (currentNode.next ? ' -> ' : '');
             currentNode = currentNode.next;
         }
 

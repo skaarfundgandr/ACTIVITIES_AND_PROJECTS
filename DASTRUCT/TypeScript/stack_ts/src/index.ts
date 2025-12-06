@@ -1,10 +1,12 @@
 import {MyNode, MyStack} from "./Stack";
 
-let node: MyNode = new MyNode(10);
-let stack: MyStack = new MyStack(node);
+const stack: MyStack = new MyStack();
 
-console.log(stack.peek());
+stack.push(5);
+stack.push(2);
 
-stack.pop()
+for (let i = 0; i <= 10; i++) {
+    stack.push(i);
+}
 
-console.log(stack.peek());
+console.log(stack);
