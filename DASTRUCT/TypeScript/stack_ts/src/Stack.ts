@@ -79,11 +79,11 @@ class MyStack<T> {
 
     toString(): string {
         let result: string = '';
-        let currentNode: MyNode<T> | null = this.head;
+        let curr: MyNode<T> | null = this.head;
 
-        while (currentNode !== null) {
-            result += String(currentNode.value) + (currentNode.next ? ' -> ' : '');
-            currentNode = currentNode.next;
+        while (curr !== null) {
+            result += String(curr.value) + (curr.next ? ' -> ' : '');
+            curr = curr.next;
         }
 
         return result;

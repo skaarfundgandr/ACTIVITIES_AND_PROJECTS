@@ -9,7 +9,7 @@ for (let i = 0; i <= 10; i++) {
     stack.push(i);
 }
 
-console.log(stack);
+console.log(String(stack));
 
 while (!stack.isEmpty()) {
     const poppedNode = stack.pop();
