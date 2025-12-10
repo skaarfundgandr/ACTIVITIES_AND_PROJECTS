@@ -11,12 +11,20 @@ class MyNode<T> {
 class MyStack<T> {
     head: MyNode<T> | null;
     tail: MyNode<T> | null;
+    size: number;
 
     constructor();
     constructor(node: MyNode<T>);
     constructor(node?: MyNode<T>) {
-        this.head = node ?? null;
-        this.tail = node ?? null;
+        if (node) {
+            this.head = node;
+            this.tail = node;
+            this.size = 1;
+        } else {
+            this.head = null;
+            this.tail = null;
+            this.size = 0;
+        }
     }
 
     isEmpty(): boolean {
@@ -35,6 +43,8 @@ class MyStack<T> {
             this.head = node;
         }
 
+        this.size += 1;
+
         return true;
     }
 
@@ -49,6 +59,7 @@ class MyStack<T> {
         if (this.head === null) {
             this.tail = null;
         }
+        this.size -= 1;
 
         poppedNode!.next = null;
         return poppedNode;
@@ -60,6 +71,10 @@ class MyStack<T> {
 
     display(): void {
         console.log(this);
+    }
+
+    getCount(): number {
+        return this.size;
     }
 
     toString(): string {

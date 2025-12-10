@@ -1,6 +1,6 @@
-import {MyNode, MyStack} from "./Stack";
+import {MyStack} from "./Stack";
 
-const stack: MyStack = new MyStack();
+const stack: MyStack<number> = new MyStack();
 
 stack.push(5);
 stack.push(2);
@@ -10,3 +10,10 @@ for (let i = 0; i <= 10; i++) {
 }
 
 console.log(stack);
+
+while (!stack.isEmpty()) {
+    const poppedNode = stack.pop();
+    console.log(`Popped node value: ${poppedNode?.value}`);
+}
+
+console.log(`Final stack size: ${stack.getCount()}`);
