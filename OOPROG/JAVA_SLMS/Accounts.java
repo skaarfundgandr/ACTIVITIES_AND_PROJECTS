@@ -32,7 +32,7 @@ public class Accounts {
     }
 
     // log in process
-    public boolean login(String username, String password) {
+    public boolean logIn(String username, String password) {
         User current = firstUser;
         while (current != null) {
             if (current.getUsername().equals(username) && current.getPassword().equals(password)) {
